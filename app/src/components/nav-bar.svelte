@@ -1,5 +1,16 @@
+<script>
+	import { goto } from '$app/navigation';
+</script>
+
 <nav>
-	<object type="image/svg+xml" data="img/brand.svg" title="brand" />
+	<span on:click={() => goto('/')}>
+		<img src="img/brand.svg" alt="brand" />
+	</span>
+	<ul class="navlinks">
+		<li class="navlink"><a href="blog">blog</a></li>
+		<li class="navlink"><a href="contact">contact</a></li>
+		<li class="navlink"><a href="https://poly.mrsauravsahu.tech">timeline</a></li>
+	</ul>
 </nav>
 
 <style>
@@ -11,10 +22,31 @@
 		border-radius: 0.5rem;
 	}
 
+	.navlinks {
+		list-style-type: none;
+		display: flex;
+		height: 100%;
+		margin: 0;
+	}
+
+	.navlink {
+		display: flex;
+		align-items: center;
+	}
+
+	a,
+	a:visited,
 	span {
-		font-weight: 900;
-		font-size: 3rem;
-		color: white;
-		margin-left: 0.5rem;
+		color: var(--bg);
+		text-decoration: none;
+		padding: 0 2rem;
+		cursor: pointer;
+		transform: translateY(0);
+		transition: transform 0.3s ease-in-out;
+	}
+
+	a:hover,
+	span:hover {
+		transform: translateY(-0.15rem);
 	}
 </style>

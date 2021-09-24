@@ -1,5 +1,12 @@
 <script>
+	import { onMount } from 'svelte';
+
 	import Nav from '../components/nav-bar.svelte';
+
+	onMount(() => {
+		import('@vanillawc/wc-markdown/themes/prism-okaidia.css');
+		import('@vanillawc/wc-markdown/index');
+	});
 </script>
 
 <Nav />
@@ -30,7 +37,7 @@
 
 	:root {
 		--accent: #333;
-		--bg: #F8F8F8;
+		--bg: #f8f8f8;
 	}
 
 	main {

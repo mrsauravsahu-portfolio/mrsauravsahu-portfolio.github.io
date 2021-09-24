@@ -3,3 +3,8 @@ node_modules
 /build
 /.svelte-kit
 /package
+/static/data/blog-posts
+
+# old .gitignore
+
+/cypress/screenshots

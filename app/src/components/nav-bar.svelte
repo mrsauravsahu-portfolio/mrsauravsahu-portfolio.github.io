@@ -4,11 +4,11 @@
 
 <nav>
 	<span on:click={() => goto('/')}>
-		<img src="img/brand.svg" alt="brand" />
+		<img src="/img/brand.svg" alt="brand" />
 	</span>
 	<ul class="navlinks">
-		<li class="navlink"><a href="blog">blog</a></li>
-		<li class="navlink"><a href="contact">contact</a></li>
+		<li class="navlink"><a href="/blog">blog</a></li>
+		<li class="navlink"><a href="/contact">contact</a></li>
 		<li class="navlink"><a href="https://poly.mrsauravsahu.tech">timeline</a></li>
 	</ul>
 </nav>

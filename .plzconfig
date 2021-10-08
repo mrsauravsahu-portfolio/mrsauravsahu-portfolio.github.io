@@ -12,4 +12,4 @@
 moduledir = third_party.python
 
 [buildconfig]
-default-docker-repo = learn-kubernetes
+default-docker-repo = mrsauravsahu

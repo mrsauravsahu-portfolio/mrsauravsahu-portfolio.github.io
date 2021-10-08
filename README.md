@@ -69,5 +69,5 @@ with microk8s on Linux, the services will directly be available on the NodePort 
 
 You can get the port with 
 ```
-kubectl -n learn-kubernetes describe svc/documentation-svc | grep NodePort
+kubectl -n mrsauravsahu describe svc/documentation-svc | grep NodePort
 ```

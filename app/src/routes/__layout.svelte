@@ -37,7 +37,7 @@
 
 	:root {
 		--accent: #333;
-		--bg: #f8f8f8;
+		--bg: #F8F8F8;
 	}
 
 	main {

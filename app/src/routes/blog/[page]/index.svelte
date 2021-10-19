@@ -29,62 +29,59 @@
 	<title>Blog</title>
 </svelte:head>
 
-<div class="container blogs">
-	<div class="ss-content">
-		<h2>blog</h2>
-		<p>
-			Here are a few thoughts that I thought should be written down... The old blogs have also been
-			imported here. If they don't look alright, just give me shoutout on Twitter, will check it
-			out.
-		</p>
-		<ul class="posts-container">
-			{#each blogs as blog}
-				<!-- we're using the non-standard `rel=prefetch` attribute to
+<section class="container blogs">
+	<h2>blog</h2>
+	<p>
+		Here are a few thoughts that I thought should be written down... The old blogs have also been
+		imported here. If they don't look alright, just give me shoutout on Twitter, will check it out.
+	</p>
+	<ul class="posts-container">
+		{#each blogs as blog}
+			<!-- we're using the non-standard `rel=prefetch` attribute to
 				tell Sapper to load the data for the page as soon as
 				the user hovers over the link or taps it, instead of
 				waiting for the 'click' event -->
-				<li>
-					<a rel="prefetch" href="posts/{blog.id}">
-						<PfCard theme="dark">
-							<div slot="title" class="title">
-								<PfHeader theme="dark">{blog.title}</PfHeader>
+			<li>
+				<a rel="prefetch" href="posts/{blog.id}">
+					<PfCard theme="dark">
+						<div slot="title" class="title">
+							<PfHeader theme="dark">{blog.title}</PfHeader>
+						</div>
+						<div slot="content" class="content">
+							<hr />
+							<div class="blog-meta">
+								<h4>{DateTime.fromISO(blog.createdAt).toRelative()}</h4>
+								•
+								<h4>
+									{#if Duration.fromISO(blog.approxTimeToRead).minutes <= 1}
+										less than a minute
+									{:else}
+										{`${Duration.fromISO(blog.approxTimeToRead).minutes} minutes`}
+									{/if}
+								</h4>
+								<h4>read</h4>
 							</div>
-							<div slot="content" class="content">
-								<hr />
-								<div class="blog-meta">
-									<h4>{DateTime.fromISO(blog.createdAt).toRelative()}</h4>
-									•
-									<h4>
-										{#if Duration.fromISO(blog.approxTimeToRead).minutes <= 1}
-											less than a minute
-										{:else}
-											{`${Duration.fromISO(blog.approxTimeToRead).minutes} minutes`}
-										{/if}
-									</h4>
-									<h4>read</h4>
-								</div>
-								{#if blog.description}{blog.description}{/if}
-							</div>
-						</PfCard>
-					</a>
-				</li>
-			{/each}
-		</ul>
-		<div class="page-container">
-			{#if currentPage !== 1}
-				<a href={`/blog/${currentPage - 1}`}>
-					<PfButton theme="dark" disabled={currentPage === 1}>{'<'}</PfButton>
+							{#if blog.description}{blog.description}{/if}
+						</div>
+					</PfCard>
 				</a>
-			{/if}
-			&nbsp; {currentPage} of {lastPage} &nbsp;
-			{#if currentPage !== lastPage}
-				<a href={`/blog/${currentPage + 1}`}>
-					<PfButton theme="dark" disabled={currentPage === lastPage}>{'>'}</PfButton>
-				</a>
-			{/if}
-		</div>
+			</li>
+		{/each}
+	</ul>
+	<div class="page-container">
+		{#if currentPage !== 1}
+			<a href={`/blog/${currentPage - 1}`}>
+				<PfButton theme="dark" disabled={currentPage === 1}>{'<'}</PfButton>
+			</a>
+		{/if}
+		&nbsp; {currentPage} of {lastPage} &nbsp;
+		{#if currentPage !== lastPage}
+			<a href={`/blog/${currentPage + 1}`}>
+				<PfButton theme="dark" disabled={currentPage === lastPage}>{'>'}</PfButton>
+			</a>
+		{/if}
 	</div>
-</div>
+</section>
 
 <style>
 	.posts-container {
@@ -150,6 +147,10 @@
 	@media only screen and (min-width: 48rem) {
 		li {
 			width: calc(50% - 1rem);
+		}
+
+		section {
+			margin: 1rem 4rem;
 		}
 	}
 </style>

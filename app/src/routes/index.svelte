@@ -20,6 +20,6 @@
 
 	p {
 		font-weight: 900;
-		font-size: 3vw;
+		font-size: 3rem;
 	}
 </style>

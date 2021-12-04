@@ -1,3 +1,7 @@
+<svelte:head>
+  <title>@mrsauravsahu/contact</title>
+</svelte:head>
+
 <script lang="ts" context="module">
   export async function preload() {
     // Get contact data
@@ -15,9 +19,5 @@
 
   import Contact from "../../pages/home/contact.svelte";
 </script>
-
-<svelte:head>
-  <title>Contact</title>
-</svelte:head>
 
 <Contact theme={$theme} {contact} />

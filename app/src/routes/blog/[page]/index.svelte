@@ -1,3 +1,7 @@
+<svelte:head>
+	<title>@mrsauravsahu/blog</title>
+</svelte:head>
+
 <script lang="ts" context="module">
 	export async function load({ page, fetch }) {
 		let pageNumber = Number(page.params.page);
@@ -24,10 +28,6 @@
 	export let currentPage;
 	export let lastPage;
 </script>
-
-<svelte:head>
-	<title>Blog</title>
-</svelte:head>
 
 <section class="container blogs">
 	<h2>blog</h2>

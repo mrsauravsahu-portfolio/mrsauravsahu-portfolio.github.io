@@ -43,8 +43,8 @@
 
 	main {
 		margin: 0 0.5rem;
-		display: flex;
-		flex-grow: 1;
 		background-color: var(--bg);
+		overflow-y: scroll;
+		scroll-behavior: smooth;
 	}
 </style>

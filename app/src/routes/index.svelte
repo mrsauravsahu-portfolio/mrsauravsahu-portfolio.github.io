@@ -7,19 +7,24 @@
 
 <style>
 	.home {
+		width: 100%;
 		display: flex;
     padding: 0 0.5rem;
+		background: url('/img/mrss-silhouette.svg');
+		background-repeat: no-repeat;
+		background-position: right bottom;
+		background-size: calc(20%);
 	}
 
 	.bio {
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
-		width: 80%;
 	}
 
 	p {
 		font-weight: 900;
-		font-size: 3rem;
+		font-size: 5rem;
+		margin: 8rem;
 	}
 </style>

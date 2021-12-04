@@ -43,6 +43,7 @@
 		cursor: pointer;
 		transform: translateY(0);
 		transition: transform 0.3s ease-in-out;
+		font-size: 1.5rem;
 	}
 
 	a:hover,

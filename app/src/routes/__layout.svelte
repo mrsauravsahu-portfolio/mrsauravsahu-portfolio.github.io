@@ -25,7 +25,8 @@
 
 	:global(body) {
 		margin: 0.5rem;
-		height: calc(100% - 2 * 0.5rem);
+		margin-bottom: 0;
+		height: calc(100% - 0.5rem);
 		display: flex;
 		flex-direction: column;
 	}

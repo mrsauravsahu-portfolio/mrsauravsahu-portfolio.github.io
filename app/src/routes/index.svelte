@@ -1,7 +1,13 @@
+<svelte:head>
+	<title>@mrsauravsahu</title>
+</svelte:head>
+
 <section class="home">
 	<div class="bio">
-		<p>software engineer by profession; <br/>
-			photographer, cook and a student at heart.</p>
+		<p>
+			software engineer by profession; <br />
+			photographer, cook and a student at heart.
+		</p>
 	</div>
 </section>
 
@@ -9,7 +15,7 @@
 	.home {
 		width: 100%;
 		display: flex;
-    padding: 0 0.5rem;
+		padding: 0 0.5rem;
 		background: url('/img/mrss-silhouette.svg');
 		background-repeat: no-repeat;
 		background-position: right bottom;

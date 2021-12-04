@@ -26,7 +26,7 @@
 	}
 
 	h1 {
-		margin-top: 4rem;
+		margin-top: 2rem;
 	}
 
 	.home {

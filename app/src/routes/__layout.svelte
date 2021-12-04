@@ -47,4 +47,8 @@
 		overflow-y: scroll;
 		scroll-behavior: smooth;
 	}
+
+	:global(a),:global(a:visited) {
+		color: black;
+	}
 </style>

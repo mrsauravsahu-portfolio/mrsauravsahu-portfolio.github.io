@@ -1,3 +1,7 @@
+<script>
+import BlogPost from "../components/blog-post.svelte";
+
+</script>
 <svelte:head>
 	<title>@mrsauravsahu</title>
 </svelte:head>
@@ -16,6 +20,11 @@
 		<p>
 			Well, I occassionally write things. You can also find them on your favorite blog platforms, like <a href="https://mrsauravsahu.medium.com">medium</a> and <a href="https://dev.to/mrsauravsahu">dev.to</a>.
 		</p>
+		<div class='blog-posts'>
+			<BlogPost />
+			<BlogPost />
+			<BlogPost />
+		</div>
 </section>
 
 <style>
@@ -49,5 +58,14 @@
 		font-weight: 900;
 		font-size: 3rem;
 		margin: 2rem;
+	}
+
+
+	/* blog */
+
+	.blog-posts {
+		display: flex;
+		justify-content: space-between;
+		margin-top: 2rem;
 	}
 </style>

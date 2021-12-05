@@ -56,9 +56,9 @@
 <section class="contact" id="contact">
 	<h1>contact</h1>
 	<p>
-		Here's how you can get in touch with me - links to all social media. I still don't understand Snapchat. Most active on Github and
+		Here's how you can get in touch with me - links to all social media. I still don't understand Snapchat 😂 Most active on Github and
 		Instagram; but you can send a quick email, or a pull request, or a direct message or a tweet...
-		😂
+		😝
 	</p>
 	<div class="contact-tiles">
 		<a href="mailto:mrsauravsahu@outlook.com">

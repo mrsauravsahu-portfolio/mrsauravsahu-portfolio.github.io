@@ -31,11 +31,12 @@
 	}
 
 	.title {
-		font-weight: bold;
+		font-weight: 500;
 		margin: 0.5rem 0;
 	}
 
   .description {
-    font-size: 0.75rem;
+    font-size: 1rem;
+		font-weight: 200;
   }
 </style>

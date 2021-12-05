@@ -86,4 +86,8 @@
 	.blog a {
 		align-self: flex-end;
 	}
+
+	.blog p {
+		font-size: 1.5rem;
+	}
 </style>

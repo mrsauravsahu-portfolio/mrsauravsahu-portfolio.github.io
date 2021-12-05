@@ -15,7 +15,7 @@
 </main>
 
 <style>
-	@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;900&display=swap');
+	@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@200;500;800&display=swap');
 
 	:global(html) {
 		margin: 0;

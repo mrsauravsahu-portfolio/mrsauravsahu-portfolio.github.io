@@ -9,11 +9,10 @@
 
 <script lang="ts">
 	import { DateTime, Duration } from 'luxon';
-	import { PfHeader } from '@propfull/kit';
 
 	import Utterance from '../../../../components/utterance.svelte';
 	export let blog;
-	const blogUrl = `posts/${blog.id}/file`;
+	const blogUrl = `/blog/posts/${blog.id}/file`;
 
 	const duration = Duration.fromISO(blog.approxTimeToRead);
 	const durationText =
@@ -24,8 +23,8 @@
 	<title>{blog.title}</title>
 </svelte:head>
 
-<div class="ss-content">
-	<PfHeader theme="dark" type="h1">{blog.title}</PfHeader>
+<section class="blog-post">
+	<h1 type="h1">{blog.title}</h1>
 	<h4>
 		<span class="prefix"> Published on </span>
 		{DateTime.fromISO(blog.createdAt).toFormat('EEEE, MMMM dd yyyy')}
@@ -34,16 +33,20 @@
 		<span class="prefix">read</span>
 	</h4>
 	<a href={blogUrl}>
-		<PfHeader theme="dark" type="h4">🔽 download raw</PfHeader>
+		<h2 type="h4">🔽 download raw</h2>
 	</a>
 	<!-- TODO: fix crawling without this extra anchor tag -->
 	<a href={blogUrl} />
 	<wc-markdown src={blogUrl} highlight />
 	<!-- TODO: Theme switching without reloads -->
 	<Utterance />
-</div>
+</section>
 
 <style>
+section {
+	width: 100%;
+}
+
 	.prefix {
 		font-weight: 100;
 	}

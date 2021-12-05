@@ -1,18 +1,13 @@
 <script>
-	let data = {
-		id: 49,
-		title: 'Software Versioning - An Introduction with GitVersion',
-		description:
-			"Software Versioning is something we all must do. Let's checkout the basics, and also, GitVersion."
-	};
+	export let blog;
 </script>
 
 <!-- note: rotate randomly between -4deg and 4deg -->
-<a href={`/blog/posts/${data.id}`}>
+<a href={`/blog/posts/${blog.id}`}>
 <div class="blog-post" style={`--rotation: ${Math.ceil((Math.random() * 8) - 4)}deg;`}>
-	<img src="/img/donut.jpg" alt={data.title} />
-	<div class="title">{data.title}</div>
-	<div class="description">{data.description}</div>
+	<img src="/img/donut.jpg" alt={blog.title} />
+	<div class="title">{blog.title}</div>
+	<div class="description">{blog.description}</div>
 </div>
 </a>
 

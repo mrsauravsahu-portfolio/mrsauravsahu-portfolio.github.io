@@ -1,5 +1,16 @@
-<script>
+<script lang="ts" context="module">
+	export async function load({ fetch }) {
+		const response = await fetch('/blog.json');
+		const data: { blogs: any[] } = await response.json();
+		// Get latest 3 blogs
+		let currentPageBlogs = data.blogs.slice(0, 3);
+		return { props: { recentBlogs: currentPageBlogs } };
+	}
+</script>
+
+<script lang="ts">
 	import BlogPost from '../components/blog-post.svelte';
+	export let recentBlogs: any[];
 </script>
 
 <svelte:head>
@@ -19,17 +30,17 @@
 
 <section class="blog">
 	<h1 id="blog">recent blogs</h1>
-		<p>
-			Well, I occassionally write things. You can also find these on your favorite blogging platforms,
-			like <a href="https://mrsauravsahu.medium.com">medium</a>
-			and <a href="https://dev.to/mrsauravsahu">dev.to</a>.
-		</p>
-		<div class="blog-posts">
-			<BlogPost />
-			<BlogPost />
-			<BlogPost />
-		</div>
-		<a role="button" href="/blog">read more ⟶</a>
+	<p>
+		Well, I occassionally write things. You can also find these on your favorite blogging platforms,
+		like <a href="https://mrsauravsahu.medium.com">medium</a>
+		and <a href="https://dev.to/mrsauravsahu">dev.to</a>.
+	</p>
+	<div class="blog-posts">
+		{#each recentBlogs as blog}
+			<BlogPost {blog} />
+		{/each}
+	</div>
+	<a role="button" href="/blog">read more ⟶</a>
 </section>
 
 <style>

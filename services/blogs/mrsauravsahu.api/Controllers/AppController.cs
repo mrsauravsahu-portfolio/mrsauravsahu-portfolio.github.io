@@ -30,8 +30,8 @@ namespace mrsauravsahu.api.Controllers
 
             var appInfo = new AppInfo(
                 aboutConfig.AppName,
-                aboutConfig.ContactEmail,
-                $"v{aboutConfig.Version}");
+                $"v{aboutConfig.Version}",
+                aboutConfig.ContactEmail);
 
             return Ok(new Envelope<AppInfo>(appInfo));
         }

@@ -20,7 +20,7 @@
 <section class="blog">
 	<h1 id="blog">recent blogs</h1>
 		<p>
-			Well, I occassionally write things. You can also find them on your favorite blog platforms,
+			Well, I occassionally write things. You can also find them on your favorite blogging platforms,
 			like <a href="https://mrsauravsahu.medium.com">medium</a>
 			and <a href="https://dev.to/mrsauravsahu">dev.to</a>.
 		</p>

@@ -100,24 +100,6 @@
 </section>
 
 <style>
-	section {
-		height: calc(100vh - 1rem - 4rem);
-		padding: 2rem;
-		padding-bottom: 0;
-	}
-
-	h1 {
-		font-size: 6rem;
-	}
-
-	hr {
-		margin: 0;
-		padding: 0.0625rem;
-		background-color: black;
-		stroke-width: 0;
-		border: none;
-	}
-
 	.home {
 		display: flex;
 		padding: 0 0.5rem;

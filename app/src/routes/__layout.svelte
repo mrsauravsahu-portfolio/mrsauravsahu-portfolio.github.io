@@ -65,4 +65,22 @@
 	:global(a[role='button']:hover) {
 		transform: scale(1.1);
 	}
+
+	:global(section) {
+		height: calc(100vh - 1rem - 4rem);
+		padding: 2rem;
+		padding-bottom: 0;
+	}
+
+	:global(h1) {
+		font-size: 6rem;
+	}
+
+	:global(hr){
+		margin: 0;
+		padding: 0.0625rem;
+		background-color: black;
+		stroke-width: 0;
+		border: none;
+	}
 </style>

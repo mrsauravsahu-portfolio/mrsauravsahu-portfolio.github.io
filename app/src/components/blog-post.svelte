@@ -9,7 +9,7 @@
 
 <!-- note: rotate randomly between -4deg and 4deg -->
 <a href={`/blog/posts/${data.id}`}>
-<div class="blog-post" style={`--rotation: ${(Math.random() * 8) - 4}deg;`}>
+<div class="blog-post" style={`--rotation: ${Math.ceil((Math.random() * 8) - 4)}deg;`}>
 	<img src="/img/donut.jpg" alt={data.title} />
 	<div class="title">{data.title}</div>
 	<div class="description">{data.description}</div>

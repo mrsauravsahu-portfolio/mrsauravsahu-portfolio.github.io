@@ -70,6 +70,7 @@
 		height: calc(100vh - 1rem - 4rem);
 		padding: 2rem;
 		padding-bottom: 0;
+		box-sizing: border-box;
 	}
 
 	:global(h1) {

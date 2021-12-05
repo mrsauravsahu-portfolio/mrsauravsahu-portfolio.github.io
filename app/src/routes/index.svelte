@@ -85,6 +85,7 @@
 
 	.blog a {
 		align-self: flex-end;
+		margin-top: 4rem;
 	}
 
 	.blog p {

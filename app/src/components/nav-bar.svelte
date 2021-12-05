@@ -8,7 +8,7 @@
 	</a>
 	<ul class="navlinks">
 		<li class="navlink"><a href="/#contact">contact</a></li>
-		<li class="navlink"><a href="/blog">blog</a></li>
+		<li class="navlink"><a href="/blog/1">blog</a></li>
 		<li class="navlink"><a href="/made-with">made-with</a></li>
 		<li class="navlink"><a href="https://poly.mrsauravsahu.tech">polywork</a></li>
 	</ul>

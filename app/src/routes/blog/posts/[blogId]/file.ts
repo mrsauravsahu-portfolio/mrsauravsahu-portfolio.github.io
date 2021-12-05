@@ -1,4 +1,4 @@
-import * as superagent from 'superagent';
+import superagent from 'superagent';
 import { variables } from '$lib/variables'
 
 export const get = async (req, res) => {
@@ -6,8 +6,7 @@ export const get = async (req, res) => {
 
     const fileUrl = `${variables.blogsBaseUrl}/api/blogs/${blogId}/file`;
     console.log(`Fetching blog content with id: ${blogId} from ${fileUrl}`);
-    const fileResponse = await superagent
-        .get(fileUrl)
+    const fileResponse = await superagent(fileUrl)
         .buffer(true)
         .parse(superagent.parse.text)
 

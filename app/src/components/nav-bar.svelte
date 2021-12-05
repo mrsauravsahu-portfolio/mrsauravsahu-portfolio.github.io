@@ -3,11 +3,11 @@
 </script>
 
 <nav>
-	<a href='#home'>
+	<a href='/#home'>
 		<img src="/img/brand.svg" alt="brand" />
 	</a>
 	<ul class="navlinks">
-		<li class="navlink"><a href="#blog">recent blogs</a></li>
+		<li class="navlink"><a href="/#blog">recent blogs</a></li>
 		<li class="navlink"><a href="/contact">contact</a></li>
 		<li class="navlink"><a href="https://poly.mrsauravsahu.tech">timeline</a></li>
 	</ul>

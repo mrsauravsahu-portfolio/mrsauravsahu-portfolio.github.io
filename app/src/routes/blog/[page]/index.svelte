@@ -1,7 +1,3 @@
-<svelte:head>
-	<title>@mrsauravsahu/blog</title>
-</svelte:head>
-
 <script lang="ts" context="module">
 	export async function load({ page, fetch }) {
 		let pageNumber = Number(page.params.page);
@@ -29,11 +25,15 @@
 	export let lastPage;
 </script>
 
+<svelte:head>
+	<title>@mrsauravsahu/blog</title>
+</svelte:head>
+
 <section class="container blogs">
-	<h2>blog</h2>
+	<h1>blog</h1>
 	<p>
-		Here are a few thoughts that I thought should be written down... The old blogs have also been
-		imported here. If they don't look alright, just give me shoutout on Twitter, will check it out.
+		Here are few of the things that I learned in my 10-ish years of programming/learning journey.
+		Hope it's helpful to you as well. These blogs are usually dictated by what I'm upto...
 	</p>
 	<ul class="posts-container">
 		{#each blogs as blog}
@@ -43,11 +43,11 @@
 				waiting for the 'click' event -->
 			<li>
 				<a rel="prefetch" href="posts/{blog.id}">
-					<PfCard theme="dark">
-						<div slot="title" class="title">
-							<PfHeader theme="dark">{blog.title}</PfHeader>
+					<div class="post">
+						<div class="title">
+							<h3>{blog.title}</h3>
 						</div>
-						<div slot="content" class="content">
+						<div class="content">
 							<hr />
 							<div class="blog-meta">
 								<h4>{DateTime.fromISO(blog.createdAt).toRelative()}</h4>
@@ -63,22 +63,18 @@
 							</div>
 							{#if blog.description}{blog.description}{/if}
 						</div>
-					</PfCard>
+					</div>
 				</a>
 			</li>
 		{/each}
 	</ul>
 	<div class="page-container">
 		{#if currentPage !== 1}
-			<a href={`/blog/${currentPage - 1}`}>
-				<PfButton theme="dark" disabled={currentPage === 1}>{'<'}</PfButton>
-			</a>
+			<a href={`/blog/${currentPage - 1}`} disabled={currentPage === 1}> ⟵ </a>
 		{/if}
 		&nbsp; {currentPage} of {lastPage} &nbsp;
 		{#if currentPage !== lastPage}
-			<a href={`/blog/${currentPage + 1}`}>
-				<PfButton theme="dark" disabled={currentPage === lastPage}>{'>'}</PfButton>
-			</a>
+			<a href={`/blog/${currentPage + 1}`} disabled={currentPage === lastPage}> ⟶ </a>
 		{/if}
 	</div>
 </section>
@@ -98,6 +94,14 @@
 		justify-content: center;
 	}
 
+	.post {
+		background-color: rgb(237, 237, 237);
+		box-shadow: rgb(191, 191, 191) 0.25rem 0.25rem 0.25rem;
+		height: 12rem;
+		padding: 1rem;
+		border-radius: 2rem;
+	}
+
 	ul {
 		padding: 0;
 		margin: 0;
@@ -111,14 +115,6 @@
 		margin-bottom: 2rem;
 		width: 100%;
 		min-height: 12rem;
-	}
-
-	ul a {
-		all: unset;
-		cursor: pointer;
-		display: inline-block;
-		height: 100%;
-		width: 100%;
 	}
 
 	.title,
@@ -139,18 +135,19 @@
 	}
 
 	hr {
-		background-color: #aaa;
-		height: calc(1rem / 16);
+		background-color: rgb(45, 45, 45);
+		height: 0.0625rem;
 		border: none;
+		stroke-width: 0;
+	}
+	
+	a {
+		text-decoration: none;
 	}
 
 	@media only screen and (min-width: 48rem) {
 		li {
 			width: calc(50% - 1rem);
-		}
-
-		section {
-			margin: 1rem 4rem;
 		}
 	}
 </style>

@@ -24,9 +24,8 @@
 	}
 
 	:global(body) {
-		margin: 0.5rem;
-		margin-bottom: 0;
-		height: calc(100% - 0.5rem);
+		margin: 0rem;
+		height: 100vh;
 		display: flex;
 		flex-direction: column;
 	}
@@ -38,17 +37,27 @@
 
 	:root {
 		--accent: #333;
-		--bg: #F8F8F8;
+		--bg: #f8f8f8;
 	}
 
 	main {
-		margin: 0 0.5rem;
 		background-color: var(--bg);
-		overflow-y: scroll;
 		scroll-behavior: smooth;
+		overflow-y: scroll;
 	}
 
-	:global(a),:global(a:visited) {
+	:global(a),
+	:global(a:visited) {
 		color: black;
+	}
+
+	:global(a[role='button']) {
+		text-decoration: none;
+		margin: 2rem 0;
+		padding: 2rem;
+		background-color: black;
+		color: #aaa;
+		border-radius: .5rem;
+		cursor: pointer;
 	}
 </style>

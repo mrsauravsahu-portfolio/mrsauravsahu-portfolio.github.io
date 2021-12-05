@@ -1,7 +1,7 @@
 <script>
-import BlogPost from "../components/blog-post.svelte";
-
+	import BlogPost from '../components/blog-post.svelte';
 </script>
+
 <svelte:head>
 	<title>@mrsauravsahu</title>
 </svelte:head>
@@ -15,31 +15,43 @@ import BlogPost from "../components/blog-post.svelte";
 	</div>
 </section>
 
-<section class="blog" id="blog">
-	<h1>blog</h1>
+<hr />
+
+<section class="blog">
+	<h1 id="blog">recent blogs</h1>
 		<p>
-			Well, I occassionally write things. You can also find them on your favorite blog platforms, like <a href="https://mrsauravsahu.medium.com">medium</a> and <a href="https://dev.to/mrsauravsahu">dev.to</a>.
+			Well, I occassionally write things. You can also find them on your favorite blog platforms,
+			like <a href="https://mrsauravsahu.medium.com">medium</a>
+			and <a href="https://dev.to/mrsauravsahu">dev.to</a>.
 		</p>
-		<div class='blog-posts'>
+		<div class="blog-posts">
 			<BlogPost />
 			<BlogPost />
 			<BlogPost />
 		</div>
+		<a role="button" href="/blog">read more ⟶</a>
 </section>
 
 <style>
 	section {
-		height: calc(100vh - 0.5rem - 4rem);
-		padding: 1rem;
-		padding-left: 2rem;
+		height: calc(100vh - 1rem - 4rem);
+		padding: 2rem;
+		padding-bottom: 0;
 	}
 
 	h1 {
-		margin-top: 2rem;
+		font-size: 6rem;
+	}
+
+	hr {
+		margin: 0;
+		padding: 0.0625rem;
+		background-color: black;
+		stroke-width: 0;
+		border: none;
 	}
 
 	.home {
-		width: 100%;
 		display: flex;
 		padding: 0 0.5rem;
 		background: url('/img/mrss-silhouette.svg');
@@ -55,17 +67,23 @@ import BlogPost from "../components/blog-post.svelte";
 	}
 
 	.home p {
-		font-weight: 900;
-		font-size: 3rem;
+		font-size: 4rem;
 		margin: 2rem;
 	}
 
-
 	/* blog */
 
+	.blog {
+		display: flex;
+		flex-direction: column;
+	}
 	.blog-posts {
 		display: flex;
 		justify-content: space-between;
 		margin-top: 2rem;
+	}
+
+	.blog a {
+		align-self: flex-end;
 	}
 </style>

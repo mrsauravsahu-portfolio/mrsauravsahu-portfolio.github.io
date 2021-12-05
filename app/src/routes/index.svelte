@@ -116,7 +116,7 @@
 	}
 
 	.bio > p {
-		font-size: 4rem;
+		font-size: 3rem;
 		font-weight: 100;
 		margin: 4rem;
 	}
@@ -139,7 +139,7 @@
 
 	.blog a {
 		align-self: flex-end;
-		margin-top: 4rem;
+		margin-top: 2rem;
 	}
 
 	/* contact */

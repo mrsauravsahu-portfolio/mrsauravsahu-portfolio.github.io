@@ -74,7 +74,8 @@
 	}
 
 	:global(h1) {
-		font-size: 6rem;
+		font-size: 4rem;
+		margin: 0.25rem 0;
 	}
 
 	:global(hr){

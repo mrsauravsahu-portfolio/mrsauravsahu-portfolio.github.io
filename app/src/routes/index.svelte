@@ -28,8 +28,8 @@
 
 <hr />
 
-<section class="blog">
-	<h1 id="blog">recent blogs</h1>
+<section class="blog" id="blog">
+	<h1>recent blogs</h1>
 	<p>
 		Well, I occassionally write things. You can also find these on your favorite blogging platforms,
 		like <a href="https://mrsauravsahu.medium.com">medium</a>
@@ -41,6 +41,15 @@
 		{/each}
 	</div>
 	<a role="button" href="/blog">read more ⟶</a>
+</section>
+
+<section id="contact">
+	<h1>contact</h1>
+	<p>
+		Here's how you can get in touch with me - links to all contact. Most active on Github and
+		Instagram; but you can send a quick email, or a pull request, or a direct message or a tweet...
+		😂
+	</p>
 </section>
 
 <style>
@@ -77,9 +86,15 @@
 		justify-content: center;
 	}
 
-	.home p {
+	.bio > p {
 		font-size: 4rem;
-		margin: 2rem;
+		font-weight: 100;
+		margin: 4rem;
+	}
+
+	p {
+		font-size: 1.5rem;
+		margin: 2rem 0;
 	}
 
 	/* blog */
@@ -97,9 +112,5 @@
 	.blog a {
 		align-self: flex-end;
 		margin-top: 4rem;
-	}
-
-	.blog p {
-		font-size: 1.5rem;
 	}
 </style>

@@ -50,7 +50,7 @@
 			<BlogPost {blog} />
 		{/each}
 	</div>
-	<a role="button" href="/blog">read more ⟶</a>
+	<a role="button" href="/blog/1">read more ⟶</a>
 </section>
 
 <section class="contact" id="contact">

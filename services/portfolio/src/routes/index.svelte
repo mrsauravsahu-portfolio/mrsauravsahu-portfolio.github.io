@@ -200,12 +200,21 @@
 	}
 
 	@media (max-width: 40rem) {
-
-		section.home {height: calc}
+		section.home {
+			height: calc;
+		}
 
 		.blog-posts {
 			flex-direction: column;
 			align-items: center;
+		}
+
+		.contact-tiles {
+			flex-wrap: wrap;
+		}
+
+		.contact-tiles > a {
+			margin: 1rem;
 		}
 	}
 </style>

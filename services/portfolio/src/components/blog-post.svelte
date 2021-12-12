@@ -36,7 +36,7 @@
 	img {
 		margin-bottom: 0.25rem;
 		border-radius: 1rem;
-		filter:grayscale()
+		filter: grayscale();
 	}
 
 	.title,
@@ -57,5 +57,17 @@
 	.description {
 		font-size: 1rem;
 		font-weight: 200;
+	}
+
+	@media (max-width: 768px) {
+		.title {
+			font-size: 0.75rem;
+		}
+		.description {
+			font-size: 0.75rem;
+		}
+		.blog-post {
+			padding: 0.75rem;
+		}
 	}
 </style>

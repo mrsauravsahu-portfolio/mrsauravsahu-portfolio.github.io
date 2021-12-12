@@ -5,7 +5,7 @@
 <!-- note: rotate randomly between -4deg and 4deg -->
 <a href={`/blog/posts/${blog.id}`}>
 	<div class="blog-post" style={`--rotation: ${Math.ceil(Math.random() * 8 - 4)}deg;`}>
-		<img src="/img/donut.jpg" alt={blog.title} />
+		<img src={blog.coverImageUrl} alt={blog.title} />
 		<div class="title">{blog.title}</div>
 		<div class="description">{blog.description}</div>
 	</div>
@@ -36,6 +36,7 @@
 	img {
 		margin-bottom: 0.25rem;
 		border-radius: 1rem;
+		filter:grayscale()
 	}
 
 	.title,

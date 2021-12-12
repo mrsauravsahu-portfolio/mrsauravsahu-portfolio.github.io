@@ -24,6 +24,7 @@ export const get = async (_, res) => {
                     description
                     createdAt
                     approxTimeToRead
+                    coverImageUrl
                 }
 
                 pageInfo {

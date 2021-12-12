@@ -13,6 +13,7 @@
   "devDependencies": {
     "@fortawesome/free-brands-svg-icons": "^5.15.4",
     "@fortawesome/free-regular-svg-icons": "^5.15.4",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "@propfull/kit": "0.0.0-alpha.13",
     "@sveltejs/adapter-static": "^1.0.0-next.19",
     "@sveltejs/kit": "next",

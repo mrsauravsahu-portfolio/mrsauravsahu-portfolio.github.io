@@ -32,6 +32,9 @@
 		{durationText}
 		<span class="prefix">read</span>
 	</h4>
+	<a href={blogUrl}>
+		<h2 type="h4">🔽 download raw</h2>
+	</a>
 	<!-- TODO: fix crawling without this extra anchor tag -->
 	<a href={blogUrl} />
 	<wc-markdown src={blogUrl} highlight />

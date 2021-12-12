@@ -24,6 +24,8 @@ namespace mrsauravsahu.data.models
         public string ApproxTimeToRead { get; set; }
         private string images;
 
+        public string CoverImageUrl { get; set; }
+
         [NotMapped]
         public IEnumerable<string> Images
         {

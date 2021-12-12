@@ -12,5 +12,6 @@ namespace mrsauravsahu.services.contracts
         public DateTime CreatedAt { get; set; }
         public string FileUrl { get; set; }
         public IEnumerable<string> ImageUrls { get; set; }
-    }
+        public string CoverImageUrl { get; set; }
+  }
 }

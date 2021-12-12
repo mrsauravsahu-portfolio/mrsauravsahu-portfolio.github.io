@@ -7,7 +7,7 @@
 
 <nav class:nav__open={isNavOpen}>
 	<div class="navmain">
-		<a href="/#home" class="brand">
+		<a href="/#home" class="brand" on:click={() => isNavOpen=false}>
 			<img src="/img/brand.svg" alt="brand" />
 		</a>
 		<button
@@ -19,10 +19,10 @@
 		</button>
 	</div>
 	<ul class="navlinks" class:navlinks__closed={!isNavOpen}>
-		<li class="navlink"><a href="/#blog">recent blogs</a></li>
-		<li class="navlink"><a href="/#contact">contact</a></li>
-		<li class="navlink"><a href="/#about">about</a></li>
-		<li class="navlink"><a href="https://poly.mrsauravsahu.tech">polywork</a></li>
+		<li class="navlink"><a  on:click={() => isNavOpen=false} href="/#blog">recent blogs</a></li>
+		<li class="navlink"><a  on:click={() => isNavOpen=false} href="/#contact">contact</a></li>
+		<li class="navlink"><a  on:click={() => isNavOpen=false} href="/#about">about</a></li>
+		<li class="navlink"><a  on:click={() => isNavOpen=false} href="https://poly.mrsauravsahu.tech">polywork</a></li>
 	</ul>
 </nav>
 

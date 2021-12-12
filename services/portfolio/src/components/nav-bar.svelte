@@ -7,7 +7,7 @@
 
 <nav class:nav__open={isNavOpen}>
 	<div class="navmain">
-		<a href="/#home">
+		<a href="/#home" class="brand">
 			<img src="/img/brand.svg" alt="brand" />
 		</a>
 		<button
@@ -35,7 +35,11 @@
 		margin: 0.5rem;
 		border-radius: 1rem;
 		height: 4rem;
-		transition: 0.2s cubic-bezier(0.215, 0.610, 0.355, 1) height;
+		transition: 0.2s ease-in-out height;
+	}
+
+	.brand {
+		padding: 0 1rem;
 	}
 
 	button {
@@ -105,6 +109,7 @@
 
 		li {
 			padding: 2rem;
+			text-transform: uppercase;
 		}
 
 		.nav__open {

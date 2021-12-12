@@ -109,7 +109,7 @@
 	</div>
 </section>
 
-<section id="about" class="page-section">
+<section id="about" class="about page-section">
 	<h1>about</h1>
 	<p>
 		Things that make this portfolio work. This portfolio uses a couple of services to get all the
@@ -185,6 +185,9 @@
 		transform: scale(1.25);
 	}
 
+	.about h2 {
+		font-size: 1rem;
+	}
 	@media (max-width: 40rem) {
 		.bio {
 			justify-content: start;

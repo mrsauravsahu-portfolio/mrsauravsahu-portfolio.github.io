@@ -150,4 +150,10 @@
 			width: calc(50% - 1rem);
 		}
 	}
+
+	@media (max-width: 40rem) {
+		.post {
+			height: auto;
+		}
+	}
 </style>

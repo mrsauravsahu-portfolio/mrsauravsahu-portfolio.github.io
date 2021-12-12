@@ -2,7 +2,7 @@ import superagent from 'superagent'
 
 import {variables } from '$lib/variables'
 
-export const get = async (req, res) => {
+export const get = async () => {
   const urls = [`${variables.blogsBaseUrl}/`];
 
   const healthRequestPromises = urls.map((url) => superagent(url))

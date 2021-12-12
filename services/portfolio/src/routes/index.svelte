@@ -4,13 +4,23 @@
 		const data: { blogs: any[] } = await response.json();
 		// Get latest 3 blogs
 		let currentPageBlogs = data.blogs.slice(0, 3);
-		return { props: { recentBlogs: currentPageBlogs } };
+
+		// Get service health
+		const healthResponse = await fetch('/svc-health.json');
+		const health = await healthResponse.json();
+		return {
+			props: {
+				recentBlogs: currentPageBlogs,
+				health: health
+			},
+		};
 	}
 </script>
 
 <script lang="ts">
 	import BlogPost from '../components/blog-post.svelte';
 	export let recentBlogs: any[];
+	export let health: any[];
 	import Icon from 'svelte-awesome/components/Icon.svelte';
 	import {
 		faYoutube,
@@ -56,9 +66,9 @@
 <section class="contact" id="contact">
 	<h1>contact</h1>
 	<p>
-		Here's how you can get in touch with me - links to all social media. I still don't understand Snapchat 😂 Most active on Github and
-		Instagram; but you can send a quick email, or a pull request, or a direct message or a tweet...
-		😝
+		Here's how you can get in touch with me - links to all social media. I still don't understand
+		Snapchat 😂 Most active on Github and Instagram; but you can send a quick email, or a pull
+		request, or a direct message or a tweet... 😝
 	</p>
 	<div class="contact-tiles">
 		<a href="mailto:mrsauravsahu@outlook.com">
@@ -97,6 +107,20 @@
 			</div>
 		</a>
 	</div>
+</section>
+
+<section id="about">
+	<h1>about</h1>
+	<p>
+		Things that make this portfolio work. This portfolio uses a couple of services to get all the
+		data required to create this site, and is built within Github Actions as a static site.
+	</p>
+	{#each health as svcHealth}
+		<!-- add poweredBy property to health -->
+		<!-- get versions for portfolio dynamically -->
+		<h2>portfolio • v0.0.1 • SvelteKit</h2>
+		<h2>{svcHealth.data.name} • {svcHealth.data.version} • .NET 5</h2>
+	{/each}
 </section>
 
 <style>
@@ -140,6 +164,10 @@
 	.blog a {
 		align-self: flex-end;
 		margin-top: 2rem;
+	}
+
+	.blog > p {
+		margin: 1rem 0 0 0;
 	}
 
 	/* contact */

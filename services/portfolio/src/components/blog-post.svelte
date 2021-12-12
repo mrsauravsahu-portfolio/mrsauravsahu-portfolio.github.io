@@ -4,11 +4,11 @@
 
 <!-- note: rotate randomly between -4deg and 4deg -->
 <a href={`/blog/posts/${blog.id}`}>
-<div class="blog-post" style={`--rotation: ${Math.ceil((Math.random() * 8) - 4)}deg;`}>
-	<img src="/img/donut.jpg" alt={blog.title} />
-	<div class="title">{blog.title}</div>
-	<div class="description">{blog.description}</div>
-</div>
+	<div class="blog-post" style={`--rotation: ${Math.ceil(Math.random() * 8 - 4)}deg;`}>
+		<img src="/img/donut.jpg" alt={blog.title} />
+		<div class="title">{blog.title}</div>
+		<div class="description">{blog.description}</div>
+	</div>
 </a>
 
 <style>
@@ -34,8 +34,18 @@
 	}
 
 	img {
+		margin-bottom: 0.25rem;
 		border-radius: 1rem;
-		margin-bottom: 1rem;
+	}
+
+	.title,
+	.description {
+		display: -webkit-box;
+		line-clamp: 2;
+		-webkit-line-clamp: 2;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		-webkit-box-orient: vertical;
 	}
 
 	.title {

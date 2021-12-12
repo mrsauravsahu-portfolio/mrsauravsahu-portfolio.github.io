@@ -24,7 +24,7 @@
 </svelte:head>
 
 <section class="blog-post">
-	<h1 type="h1">{blog.title}</h1>
+	<h1>{blog.title}</h1>
 	<h4>
 		<span class="prefix"> Published on </span>
 		{DateTime.fromISO(blog.createdAt).toFormat('EEEE, MMMM dd yyyy')}
@@ -32,9 +32,6 @@
 		{durationText}
 		<span class="prefix">read</span>
 	</h4>
-	<a href={blogUrl}>
-		<h2 type="h4">🔽 download raw</h2>
-	</a>
 	<!-- TODO: fix crawling without this extra anchor tag -->
 	<a href={blogUrl} />
 	<wc-markdown src={blogUrl} highlight />
@@ -43,9 +40,9 @@
 </section>
 
 <style>
-section {
-	width: 100%;
-}
+	section {
+		width: 100%;
+	}
 
 	.prefix {
 		font-weight: 100;
@@ -76,5 +73,11 @@ section {
 	a {
 		all: unset;
 		cursor: pointer;
+	}
+
+	@media (max-width: 40rem) {
+		h1 {
+			font-size: 2rem;
+		}
 	}
 </style>

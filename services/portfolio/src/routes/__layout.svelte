@@ -26,8 +26,8 @@
 	:global(body) {
 		margin: 0rem;
 		height: 100vh;
-		display: flex;
-		flex-direction: column;
+		/* display: flex;
+		flex-direction: column; */
 	}
 
 	:global(*) {

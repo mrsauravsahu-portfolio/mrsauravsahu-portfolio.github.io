@@ -1,18 +1,31 @@
 <script>
-	import { goto } from '$app/navigation';
+	import Icon from 'svelte-awesome/components/Icon.svelte';
+	import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
+
+	let isNavOpen = false;
 </script>
 
-<nav>
-	<a href='/#home'>
-		<img src="/img/brand.svg" alt="brand" />
-	</a>
-	<ul class="navlinks">
+<nav class:nav__open={isNavOpen}>
+	<div class="navmain">
+		<a href="/#home">
+			<img src="/img/brand.svg" alt="brand" />
+		</a>
+		<button
+			on:click={() => {
+				isNavOpen = !isNavOpen;
+			}}
+		>
+			<Icon data={faEllipsisV} scale={1} style="color: white" />
+		</button>
+	</div>
+	<ul class="navlinks" class:navlinks__closed={!isNavOpen}>
 		<li class="navlink"><a href="/#blog">recent blogs</a></li>
 		<li class="navlink"><a href="/#contact">contact</a></li>
 		<li class="navlink"><a href="/#about">about</a></li>
 		<li class="navlink"><a href="https://poly.mrsauravsahu.tech">polywork</a></li>
 	</ul>
 </nav>
+
 <style>
 	nav {
 		display: flex;
@@ -22,6 +35,14 @@
 		margin: 0.5rem;
 		border-radius: 1rem;
 		height: 4rem;
+		transition: 0.2s cubic-bezier(0.215, 0.610, 0.355, 1) height;
+	}
+
+	button {
+		display: none;
+		border: none;
+		background: none;
+		padding: 0 2rem;
 	}
 
 	.navlinks {
@@ -46,8 +67,48 @@
 		transition: transform 0.3s ease-in-out;
 	}
 
-	a:hover,
-	span:hover {
+	a:hover {
 		transform: translateY(-0.15rem);
+	}
+
+	@media (max-width: 40rem) {
+		nav {
+			flex-direction: column;
+			width: calc(100% - 1rem);
+		}
+		/* show the ellipsis button */
+		button {
+			display: initial;
+		}
+
+		.navlinks {
+			flex-direction: column;
+		}
+
+		.navmain {
+			align-self: stretch;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			height: 4rem;
+		}
+
+		.navlinks__closed {
+			display: none;
+		}
+
+		ul {
+			padding: 0;
+			align-items: center;
+			justify-content: center;
+		}
+
+		li {
+			padding: 2rem;
+		}
+
+		.nav__open {
+			height: calc(100% - 1rem);
+		}
 	}
 </style>

@@ -37,7 +37,7 @@
 	<title>@mrsauravsahu</title>
 </svelte:head>
 
-<section class="home" id="home">
+<section class="home page-section" id="home">
 	<div class="bio">
 		<p>
 			software engineer by profession; <br />
@@ -196,6 +196,16 @@
 
 		.home {
 			background-size: 45%;
+		}
+	}
+
+	@media (max-width: 40rem) {
+
+		section.home {height: calc}
+
+		.blog-posts {
+			flex-direction: column;
+			align-items: center;
 		}
 	}
 </style>

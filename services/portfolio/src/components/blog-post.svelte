@@ -59,7 +59,17 @@
 		font-weight: 200;
 	}
 
-	@media (max-width: 768px) {
+	@media (max-width: 40rem) {
+		.blog-post {
+			width: 70vw;
+		}
+
+		a {
+			margin: 1rem 0;
+		}
+	}
+
+	@media (max-width: 48rem) {
 		.title {
 			font-size: 0.75rem;
 		}

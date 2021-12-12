@@ -19,15 +19,12 @@
 
 	:global(html) {
 		margin: 0;
-		height: 100vh;
 		background-color: var(--bg);
 	}
 
 	:global(body) {
 		margin: 0rem;
-		height: 100vh;
-		/* display: flex;
-		flex-direction: column; */
+		height: 100%;
 	}
 
 	:global(*) {
@@ -43,6 +40,7 @@
 	main {
 		background-color: var(--bg);
 		scroll-behavior: smooth;
+		height: calc(100vh - 4rem - 1rem);
 		overflow-y: scroll;
 	}
 

@@ -24,9 +24,9 @@ namespace mrsauravsahu.data.models
         public string ApproxTimeToRead { get; set; }
         private string images;
 
-        public string CoverImageUrl { get; set; }
+    public string CoverImageUrl { get; set; } = "";
 
-        [NotMapped]
+    [NotMapped]
         public IEnumerable<string> Images
         {
             get => (images ?? string.Empty).Split(new char[] { Constants.FieldDelimiter }, StringSplitOptions.RemoveEmptyEntries);

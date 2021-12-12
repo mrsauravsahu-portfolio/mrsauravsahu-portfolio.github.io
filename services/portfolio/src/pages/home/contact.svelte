@@ -121,7 +121,7 @@
     align-items: center;
   }
 
-  @media only screen and (min-width: 48rem) {
+  @media (min-width: 48rem) {
     .social-link-anchor {
       width: calc(25% - 1rem);
       height: 8rem;

@@ -3,7 +3,7 @@
 </script>
 
 <style>
-  @media only screen and (min-width: 48rem) {
+  @media (min-width: 48rem) {
     .about-container {
       display: flex;
       flex-direction: row;

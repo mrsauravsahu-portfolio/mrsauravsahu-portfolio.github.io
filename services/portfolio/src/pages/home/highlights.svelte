@@ -37,7 +37,7 @@
     padding-bottom: 2rem;
   }
 
-  @media only screen and (min-width: 48rem) {
+  @media (min-width: 48rem) {
     .cards-container > a {
       width: calc(50% - 1rem);
     }

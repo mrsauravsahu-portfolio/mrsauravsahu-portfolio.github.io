@@ -12,7 +12,7 @@
 
 	import Utterance from '../../../../components/utterance.svelte';
 	export let blog;
-	const blogUrl = `/blog/posts/${blog.id}/file`;
+	const blogUrl = `/blog/posts/${blog.id}/content.md`;
 
 	const duration = Duration.fromISO(blog.approxTimeToRead);
 	const durationText =

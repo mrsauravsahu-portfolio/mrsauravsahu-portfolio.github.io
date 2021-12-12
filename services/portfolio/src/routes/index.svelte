@@ -181,6 +181,11 @@
 		transition: 0.2s ease-in-out transform;
 	}
 
+	.contact > p {
+		padding: 0;
+		margin: .5rem 0;
+	}
+
 	.contact a:hover {
 		transform: scale(1.25);
 	}

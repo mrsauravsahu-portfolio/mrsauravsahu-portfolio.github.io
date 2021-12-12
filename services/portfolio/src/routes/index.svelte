@@ -212,5 +212,10 @@
 		.contact-tiles > a {
 			margin: 1rem;
 		}
+
+		.blog > a {
+			width: calc(100% - 4rem);
+			text-align: center;
+		}
 	}
 </style>

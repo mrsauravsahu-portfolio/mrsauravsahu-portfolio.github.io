@@ -78,11 +78,17 @@
 		margin: 0.25rem 0;
 	}
 
-	:global(hr){
+	:global(hr) {
 		margin: 0;
 		padding: 0.0625rem;
 		background-color: black;
 		stroke-width: 0;
 		border: none;
+	}
+
+	@media (max-width: 40rem) {
+		section {
+			height: unset;
+		}
 	}
 </style>

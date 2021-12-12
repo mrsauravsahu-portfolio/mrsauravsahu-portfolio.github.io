@@ -12,7 +12,7 @@
 			props: {
 				recentBlogs: currentPageBlogs,
 				health: health
-			},
+			}
 		};
 	}
 </script>
@@ -130,7 +130,7 @@
 		background: url('/img/mrss-silhouette.svg');
 		background-repeat: no-repeat;
 		background-position: right bottom;
-		background-size: calc(20%);
+		background-size: 20%;
 	}
 
 	.bio {
@@ -183,5 +183,19 @@
 
 	.contact a:hover {
 		transform: scale(1.25);
+	}
+
+	@media (max-width: 40rem) {
+		.bio {
+			justify-content: start;
+		}
+
+		.bio > p {
+			margin: 1rem;
+		}
+
+		.home {
+			background-size: 45%;
+		}
 	}
 </style>

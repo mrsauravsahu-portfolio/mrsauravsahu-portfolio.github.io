@@ -40,7 +40,7 @@
 	main {
 		background-color: var(--bg);
 		scroll-behavior: smooth;
-		height: calc(100vh - 4rem - 1rem);
+		height: 100vh;
 		overflow-y: scroll;
 	}
 
@@ -65,10 +65,11 @@
 	}
 
 	:global(section) {
-		height: calc(100vh - 1rem - 4rem);
 		padding: 2rem;
 		padding-bottom: 0;
 		box-sizing: border-box;
+		height: 100vh;
+		padding-top: 5rem !important;
 	}
 
 	:global(h1) {
@@ -89,7 +90,7 @@
 			height: auto;
 		}
 		:global(section.page-section) {
-			height: calc(100vh - 1rem - 4rem);
+			height: 100vh;
 		}
 	}
 </style>

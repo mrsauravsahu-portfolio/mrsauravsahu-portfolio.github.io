@@ -28,6 +28,8 @@
 
 <style>
 	nav {
+		position: fixed;
+		width: calc(100% - 1rem);
 		display: flex;
 		align-items: center;
 		background-color: var(--accent);
@@ -36,6 +38,7 @@
 		border-radius: 1rem;
 		height: 4rem;
 		transition: 0.2s ease-in-out height;
+		z-index: 100;
 	}
 
 	.brand {

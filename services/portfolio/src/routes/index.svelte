@@ -195,6 +195,7 @@
 
 		.bio > p {
 			margin: 1rem;
+			font-size: 2.5rem;
 		}
 
 		.home {

@@ -17,7 +17,7 @@
 	}
 
 	.blog-post {
-		width: calc((100vw - 30rem) / 3);
+		width: 25vw;
 		background-color: rgb(237, 237, 237);
 		border-radius: 1.5rem;
 		display: flex;

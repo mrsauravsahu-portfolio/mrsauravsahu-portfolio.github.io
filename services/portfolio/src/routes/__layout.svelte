@@ -73,10 +73,6 @@
 		box-sizing: border-box;
 	}
 
-	:global(.page-section) {
-		height: calc(100vh - 1rem - 4rem);
-	}
-
 	:global(h1) {
 		font-size: 4rem;
 		margin: 0.25rem 0;
@@ -92,7 +88,10 @@
 
 	@media (max-width: 40rem) {
 		:global(section) {
-			height: unset;
+			height: auto;
+		}
+		:global(section.page-section) {
+			height: calc(100vh - 1rem - 4rem);
 		}
 	}
 </style>

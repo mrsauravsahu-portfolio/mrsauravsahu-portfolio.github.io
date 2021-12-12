@@ -109,7 +109,7 @@
 	</div>
 </section>
 
-<section id="about">
+<section id="about" class="page-section">
 	<h1>about</h1>
 	<p>
 		Things that make this portfolio work. This portfolio uses a couple of services to get all the
@@ -200,10 +200,6 @@
 	}
 
 	@media (max-width: 40rem) {
-		section.home {
-			height: calc;
-		}
-
 		.blog-posts {
 			flex-direction: column;
 			align-items: center;

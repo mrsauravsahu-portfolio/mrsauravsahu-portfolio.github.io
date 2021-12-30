@@ -14,10 +14,10 @@
 <style>
 	a {
 		text-decoration: none;
+		width: 30%;
 	}
 
 	.blog-post {
-		width: 25vw;
 		background-color: rgb(237, 237, 237);
 		border-radius: 1.5rem;
 		display: flex;

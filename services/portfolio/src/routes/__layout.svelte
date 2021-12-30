@@ -93,4 +93,10 @@
 			height: 100vh;
 		}
 	}
+
+	@media (min-width: 90rem) {
+		main {
+			padding: 0 calc((100vw - 90rem)/2);
+		}
+	}
 </style>

@@ -1,5 +1,5 @@
 sh_cmd(
-  name = "build",
+  name = "store",
   srcs = glob(["*"], ["node_modules"]),
   cmd = "npm --prefix svc/store ci && npm --prefix svc/store start"
 )

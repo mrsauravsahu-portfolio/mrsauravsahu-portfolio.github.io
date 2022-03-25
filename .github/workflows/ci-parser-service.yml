@@ -3,7 +3,7 @@ name: ci-parser-service
 on:
   pull_request:
     branches:
-      - cool
+      - main
     paths:
       - '.github/workflows/ci-parser-service.yml'
       - 'common/**'

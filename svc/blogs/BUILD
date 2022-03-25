@@ -6,3 +6,9 @@ docker_image(
   dockerfile = "Dockerfile",
   visibility = ["//svc/blogs/..."]
 )
+
+gentest(
+  name = "test",
+  test_cmd = "echo todo",
+  no_test_output = True
+)

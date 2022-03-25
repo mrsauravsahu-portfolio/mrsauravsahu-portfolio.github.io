@@ -1,8 +1,8 @@
 subinclude("///pleasings//docker")
 
 docker_image(
-  name = "api",
+  name = "documentation",
   srcs = glob(["*"], ["node_modules", "dist"]),
   dockerfile = "Dockerfile",
-  visibility = ["//services/api/..."]
+  visibility = ["//svc/documentation/..."]
 )

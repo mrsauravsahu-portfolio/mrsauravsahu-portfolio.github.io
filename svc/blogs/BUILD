@@ -4,5 +4,5 @@ docker_image(
   name = "blogs",
   srcs = glob(["*"]),
   dockerfile = "Dockerfile",
-  visibility = ["//services/blogs/..."]
+  visibility = ["//svc/blogs/..."]
 )

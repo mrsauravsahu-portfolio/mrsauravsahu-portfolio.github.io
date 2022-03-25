@@ -1,5 +1,14 @@
-sh_cmd(
+subinclude("///pleasings//docker")
+
+docker_image(
   name = "store",
+  srcs = glob(["*"], ["node_modules", "dist"]),
+  dockerfile = "Dockerfile"
+)
+
+
+sh_cmd(
+  name = "dev",
   srcs = glob(["*"], ["node_modules"]),
   cmd = "npm --prefix svc/store ci && npm --prefix svc/store start"
 )

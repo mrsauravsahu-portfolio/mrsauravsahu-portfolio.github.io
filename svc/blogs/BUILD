@@ -1,7 +1,7 @@
 subinclude("///pleasings//docker")
 
 docker_image(
-  name = "build",
+  name = "blogs",
   srcs = glob(["*"]),
   dockerfile = "Dockerfile",
   visibility = ["//svc/blogs/..."]

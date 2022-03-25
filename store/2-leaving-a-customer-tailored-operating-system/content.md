@@ -6,7 +6,7 @@ So, yes, I've installed Ubuntu, and have been using it for quite a while now. It
 
 Here are a few important links:
 
-1. [http://www.ubuntu.com/](http://www.ubuntu.com/)
+1. [https://www.ubuntu.com/](https://www.ubuntu.com/)
 
 2. [https://help.ubuntu.com/community/Installation](https://help.ubuntu.com/community/Installation)
 
@@ -22,7 +22,7 @@ Basically, I've been watching movies and looking for replacement applications to
 
   
 
-Also, I'm starting out with a Project on [TOR](http://en.wikipedia.org/wiki/Tor_%28anonymity_network%29). And to make things easy, I'm going to use [Shadow Simulator](http://shadow.github.io/). If you just started using Ubuntu, this link might be important: [http://www.vogella.com/tutorials/Ubuntu/article.html](http://www.vogella.com/tutorials/Ubuntu/article.html)  
+Also, I'm starting out with a Project on [TOR](https://en.wikipedia.org/wiki/Tor_%28anonymity_network%29). And to make things easy, I'm going to use [Shadow Simulator](https://shadow.github.io/). If you just started using Ubuntu, this link might be important: [https://www.vogella.com/tutorials/Ubuntu/article.html](https://www.vogella.com/tutorials/Ubuntu/article.html)  
   
   
 NOTE: I still use Windows, once in a while ;)

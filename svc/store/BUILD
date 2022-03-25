@@ -6,6 +6,6 @@ sh_cmd(
 
 gentest(
   name = "test",
-  test_cmd = "echo todo"
+  test_cmd = "echo todo",
   no_test_output = True
 )

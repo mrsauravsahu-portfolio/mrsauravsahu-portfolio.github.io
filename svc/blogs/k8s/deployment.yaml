@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: main
-          image: //services/blogs:blogs
+          image: //svc/blogs:blogs
           imagePullPolicy: IfNotPresent
           resources:
             limits:

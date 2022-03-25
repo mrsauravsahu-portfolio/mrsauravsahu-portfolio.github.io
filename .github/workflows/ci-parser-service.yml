@@ -7,7 +7,7 @@ on:
     paths:
       - '.github/workflows/ci-parser-service.yml'
       - 'common/**'
-      - 'services/parser/**'
+      - 'svc/parser/**'
 
 env:
   NODE_VERSION: 14.17.6

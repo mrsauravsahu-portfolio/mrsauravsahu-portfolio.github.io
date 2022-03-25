@@ -6,5 +6,5 @@ k8s_config(
       "service.yaml",
       "deployment.yaml",
     ],
-    containers = ["//svc/blogs:build"],
+    containers = ["//svc/blogs"],
 )

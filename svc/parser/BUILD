@@ -1,7 +1,7 @@
 subinclude("///pleasings//docker")
 
 docker_image(
-    name="build",
+    name="parser",
     srcs = glob(["*"], ["bin", "obj", "dist"]),
     dockerfile = "Dockerfile",
     visibility = ["//svc/parser/..."]

@@ -6,5 +6,5 @@ k8s_config(
       "service.yaml",
       "deployment.yaml",
     ],
-    containers = ["//svc/parser:build"],
+    containers = ["//svc/parser"],
 )

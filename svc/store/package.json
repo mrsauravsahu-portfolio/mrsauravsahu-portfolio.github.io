@@ -1,0 +1,10 @@
+{
+  "name": "@mrsauravsahu/store",
+  "version": "0.1.0-alpha.0",
+  "scripts": {
+    "start": "http-server data -p ${PORT:-8085} -a ${HOST:-127.0.0.1}"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.0"
+  }
+}

@@ -23,11 +23,11 @@ namespace mrsauravsahu.api.contracts
         public IQueryable<Blog> GetBlogs([Service] BlogsContext dbContext) => dbContext.Blogs.OrderByDescending(p => p.CreatedAt);
 
         public IQueryable<Link> GetLinks([Service] BlogsContext dbContext) => dbContext.Links;
-        
+
         public Task<Blog> GetBlogByIdAsync(BlogRouteParams input, [Service] BlogsService blogsService)
         => blogsService.GetByIdAsync(input.Id);
 
-        public Task<int> BlogsCount([Service] BlogsContext dbContext) => dbContext.Blogs.CountAsync();        
+        public Task<int> BlogsCount([Service] BlogsContext dbContext) => dbContext.Blogs.CountAsync();
 
         public async Task<IQueryable<HighlightDto>> GetHighlightsAsync([Service] HighlightsService highlightsService)
         {

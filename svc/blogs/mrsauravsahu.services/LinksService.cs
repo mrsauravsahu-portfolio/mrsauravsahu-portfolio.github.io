@@ -8,7 +8,7 @@ using Sieve.Models;
 
 namespace mrsauravsahu.services
 {
-    public class LinksService: IBasicService<Link>
+    public class LinksService : IBasicService<Link>
     {
         private readonly BlogsContext blogsContext;
 
@@ -19,7 +19,7 @@ namespace mrsauravsahu.services
 
         // TODO: Remove null default from sieve
         // should be implemented
-        public async Task<PaginatedResult<List<Link>>> GetAllAsync(SieveModel sieve = null)
+        public async Task<PaginatedResult<List<Link>>> GetAllAsync(SieveModel? sieve = null)
         {
             var totalCount = await blogsContext.Links.LongCountAsync();
             var links = await blogsContext.Links.ToListAsync();

@@ -15,4 +15,4 @@ gentest(
 )
 
 lint(package = "//svc/blogs")
-lint(name = "lint_fix", args = "--fix", package = "//svc/blogs")
+lint_fix(package = "//svc/blogs")

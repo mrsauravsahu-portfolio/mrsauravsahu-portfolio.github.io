@@ -1,11 +1,11 @@
 subinclude("///pleasings//docker")
+subinclude("//common/lint_eslint")
 
 docker_image(
   name = "store",
   srcs = glob(["*"], ["node_modules", "dist"]),
   dockerfile = "Dockerfile"
 )
-
 
 sh_cmd(
   name = "dev",
@@ -18,3 +18,5 @@ gentest(
   test_cmd = "echo todo",
   no_test_output = True
 )
+
+lint(package = "//svc/store")

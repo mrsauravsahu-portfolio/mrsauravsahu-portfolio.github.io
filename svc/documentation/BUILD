@@ -1,4 +1,5 @@
 subinclude("///pleasings//docker")
+subinclude("//common/lint_eslint")
 
 docker_image(
   name = "documentation",
@@ -12,3 +13,5 @@ gentest(
   test_cmd = "echo todo",
   no_test_output = True
 )
+
+lint(package = "//svc/documentation")

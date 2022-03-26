@@ -13,16 +13,16 @@ namespace mrsauravsahu.data.models
         }
 
         public int Id { get; set; }
-        public string Title { get; set; }
-        public string Description { get; set; }
-        public string Slug { get; set; }
+        public string? Title { get; set; }
+        public string? Description { get; set; }
+        public string? Slug { get; set; }
 
         [Sieve(CanSort = true)]
         public DateTime CreatedAt { get; set; }
-        public string File { get; set; }
+        public string? File { get; set; }
         public long WordCount { get; set; }
-        public string ApproxTimeToRead { get; set; }
-        private string images;
+        public string? ApproxTimeToRead { get; set; }
+        private string? images;
 
         public string CoverImageUrl { get; set; } = "";
 

@@ -1,5 +1,5 @@
-import { Injectable } from '@nestjs/common';
-import { AppInfo } from './types';
+import {Injectable} from '@nestjs/common'
+import {AppInfo} from './types'
 
 @Injectable()
 export class AppService {
@@ -7,10 +7,10 @@ export class AppService {
     const {
       API_SERVICE_NAME: name = 'API Service',
       API_SERVICE_VERSION: version,
-    } = process.env;
+    } = process.env
     return {
       name,
       version,
-    };
+    }
   }
 }

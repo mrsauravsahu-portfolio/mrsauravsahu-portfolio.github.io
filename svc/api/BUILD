@@ -15,5 +15,5 @@ gentest(
   no_test_output = True
 )
 
-lint(package = "//svc/documentation")
-lint(name = "lint_fix", args = "--fix", package = "//svc/documentation")
+lint(package = "//svc/api")
+lint(name = "lint_fix", args = "--fix", package = "//svc/api")

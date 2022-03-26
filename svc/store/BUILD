@@ -20,3 +20,4 @@ gentest(
 )
 
 lint(package = "//svc/store")
+lint(name = "lint_fix", args = "--fix", package = "//svc/store")

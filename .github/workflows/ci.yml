@@ -40,13 +40,9 @@ jobs:
           echo "::set-output name=SERVICES::$SERVICES"
           echo "::set-output name=SERVICES_SINGLE_LINE::$SERVICES_SINGLE_LINE"
 
-      # - name: lint targets
-      #   if: steps.check_targets.outputs.SERVICES != ''
-      #   run: |
-      #     # TODO: figure out how to pass different env for different targets
-      #     for i in ${{ steps.check_targets.outputs.SERVICES }}; do
-      #       PLZ_OVERRIDES=buildenv.SECRET_SERVICE_NAME:"$i" plz run $i:lint
-      #     done
+      - name: lint targets
+        if: steps.check_targets.outputs.SERVICES != ''
+        run: plz run parallel `echo ${{ steps.check_targets.outputs.SERVICES_SINGLE_LINE }} | sed 's|//svc/[a-z\-]*|&:lint|g'`
 
       - name: run tests
         if: steps.check_targets.outputs.SERVICES_SINGLE_LINE != ''

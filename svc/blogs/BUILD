@@ -1,4 +1,5 @@
 subinclude("///pleasings//docker")
+subinclude("//common/lint_dotnet")
 
 docker_image(
   name = "blogs",
@@ -12,3 +13,6 @@ gentest(
   test_cmd = "echo todo",
   no_test_output = True
 )
+
+lint(package = "//svc/blogs")
+lint_fix(package = "//svc/blogs")

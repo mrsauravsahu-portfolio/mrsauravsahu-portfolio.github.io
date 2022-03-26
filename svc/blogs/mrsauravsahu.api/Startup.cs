@@ -40,7 +40,7 @@ namespace mrsauravsahu.api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            
+
             services
                 .AddMvcCore()
                 .AddApiExplorer();

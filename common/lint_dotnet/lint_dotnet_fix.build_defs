@@ -1,0 +1,8 @@
+def lint_fix(package: str, name: str = 'lint_fix', args: str = '') -> str:
+  package = package.replace('^//', '')
+  cmd = f'cd common/lint_dotnet && dotnet tool install dotnet-format && dotnet format ../../{package}'
+
+  return sh_cmd(
+    name = name,
+    cmd=cmd
+  )

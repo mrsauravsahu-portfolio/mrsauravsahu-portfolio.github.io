@@ -61,7 +61,7 @@ namespace mrsauravsahu.services
         public async Task<BlogDto> AddBlogAsync(CreateBlogDto blog)
         {
             var approxTimeToRead = TimeSpan.FromMinutes(0);
-            
+
 
             // TODO: Update this with an AutoMapper or similar mapping library
             var result = blogsContext.Blogs.Add(new Blog
@@ -102,7 +102,7 @@ namespace mrsauravsahu.services
         public async Task SetFileForBlogAsync(int id, MemoryStream stream)
         {
             var blog = await blogsContext.Blogs.FindAsync(id);
-            
+
             blog.File = "content.md";
             blog.WordCount = await LocalFileService.GetWordCountAsync(stream);
 

@@ -15,3 +15,4 @@ gentest(
 )
 
 lint(package = "//svc/parser")
+lint_fix(package = "//svc/parser")

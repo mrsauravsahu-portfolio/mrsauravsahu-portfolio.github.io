@@ -17,8 +17,26 @@
         "@typescript-eslint"
     ],
     "rules": {
-        "semi": 0,
+        "semi": [
+            "error",
+            "never"
+        ],
+        "eol-last": [
+            "error",
+            "always"
+        ],
+        "no-multiple-empty-lines": [
+            "error",
+            {
+                "max": 1,
+                "maxBOF": 0,
+                "maxEOF": 0
+            }
+        ],
         "new-cap": 0,
-        "indent": ["error", 2]
+        "indent": [
+            "error",
+            2
+        ]
     }
 }

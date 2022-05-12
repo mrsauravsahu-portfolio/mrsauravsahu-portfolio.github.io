@@ -1,0 +1,21 @@
+version: '3.1'
+
+networks:
+  network:
+    name: ${PROJECT}
+
+services:
+  portfolio:
+    networks:
+      - network
+    build:
+      context: .
+      dockerfile: ../../common/docker/node-dev/dockerfile
+      args:
+        NODE_VERSION: ${NODE_VERSION}
+    volumes:
+      # TODO: Get store from a file service
+      - '${PWD}:/app'
+    entrypoint: 'sh -c "npm --prefix svc/portfolio i && npm --prefix svc/portfolio run dev -- --host"'
+    ports:
+      - 3000:3000

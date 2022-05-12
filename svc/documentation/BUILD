@@ -1,6 +1,13 @@
 subinclude("///pleasings//docker")
 subinclude("//common/lint_eslint")
 
+sh_cmd(
+  name = "compose",
+  srcs = glob(["src/**/*", "package*"], ["node_modules"]),
+  cmd = "docker-compose -f svc/documentation/docker-compose.yml --project-name $PROJECT \\\$@",
+  deps = ["//common/docker/dotnet-dev:image"],
+)
+
 docker_image(
   name = "documentation",
   srcs = glob(["*"], ["node_modules", "dist"]),

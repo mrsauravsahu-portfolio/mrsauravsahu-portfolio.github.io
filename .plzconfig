@@ -13,3 +13,6 @@ moduledir = third_party.python
 
 [buildconfig]
 default-docker-repo = mrsauravsahu
+
+[build]
+passenv = PROJECT;NODE_VERSION;DOTNET_VERSION

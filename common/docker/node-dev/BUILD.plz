@@ -1,0 +1,13 @@
+subinclude("///pleasings//docker")
+
+docker_image(
+    name = "image",
+    dockerfile = "dockerfile",
+    visibility = ["PUBLIC"]
+)
+
+filegroup(
+    name = "dockerfile",
+    srcs = ["dockerfile"],
+    visibility = ["PUBLIC"]
+)

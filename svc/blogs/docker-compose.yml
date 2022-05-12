@@ -15,7 +15,7 @@ services:
         DOTNET_VERSION: ${DOTNET_VERSION}
     working_dir: /app/mrsauravsahu.api
     volumes:
-      - '${PWD}/svc/blogs:/app'
+      - '.:/app'
     environment:
       Blogs__AppName: ${Blogs__AppName}
       Blogs__Version: ${Blogs__Version}

@@ -1,0 +1,26 @@
+subinclude("///pleasings//docker")
+subinclude("//common/lint_eslint")
+
+sh_cmd(
+  name = "compose",
+  srcs = glob(["src/**/*", "package*"], ["node_modules"]),
+  cmd = "docker compose -f svc/portfolio/docker-compose.yml --project-name $PROJECT \\\$@",
+  deps = ["//shared/docker/dotnet-dev:image"],
+)
+
+docker_image(
+  name = "portfolio",
+  srcs = glob(["*"], ["node_modules", "dist"]),
+  dockerfile = "Dockerfile",
+  visibility = ["//svc/portfolio/..."]
+)
+
+gentest(
+  name = "test",
+  data = glob(["*"], ["node_modules", "dist"]),
+  test_cmd = "npm --prefix svc/portfolio ci && npm --prefix svc/portfolio t",
+  no_test_output = True
+)
+
+lint(package = "//svc/portfolio")
+lint(name = "lint_fix", args = "--fix", package = "//svc/portfolio")

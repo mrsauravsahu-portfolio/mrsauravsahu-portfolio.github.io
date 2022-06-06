@@ -1,12 +1,12 @@
-import { urqlClient } from "../../../../setup/urql";
+import {urqlClient} from '../../../../setup/urql'
 
-import {variables } from '$lib/variables'
+import {variables} from '$lib/variables'
 
-export const get = async (req, res) => {
-  const { blogId } = req.params;
+export const get = async (req, _) => {
+  const {blogId} = req.params
 
-  const blogByIdUrl = `${variables.blogsBaseUrl}/api/blogs/${blogId}`;
-  console.log(`Fetching blog with id: ${blogId} from ${blogByIdUrl}`);
+  const blogByIdUrl = `${variables.blogsBaseUrl}/api/blogs/${blogId}`
+  console.log(`Fetching blog with id: ${blogId} from ${blogByIdUrl}`)
   const blogByIdResponse = await urqlClient.query(`
     {
         blog: blogById(input: {
@@ -22,6 +22,6 @@ export const get = async (req, res) => {
   return {
     status: 200,
     body: blogByIdResponse.data,
-    headers: { 'Content-Type': 'application/json' }
-  };
+    headers: {'Content-Type': 'application/json'},
+  }
 }

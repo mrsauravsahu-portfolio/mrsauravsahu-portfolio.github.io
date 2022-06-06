@@ -1,4 +1,4 @@
-import { createClient } from '@urql/core';
+import {createClient} from '@urql/core'
 import {variables} from '$lib/variables'
 
-export const urqlClient = createClient({ url: `${variables.blogsBaseUrl}/graphql`})
+export const urqlClient = createClient({url: `${variables.blogsBaseUrl}/graphql`})

@@ -1,4 +1,4 @@
-version: '3.1'
+version: '3.8'
 
 networks:
   network:
@@ -6,15 +6,12 @@ networks:
 
 services:
   parser:
-    networks:
-      - network
     build:
       context: .
       dockerfile: ../../common/docker/dotnet-dev/dockerfile
-      args:
-        DOTNET_VERSION: ${DOTNET_VERSION}
+    working_dir: /app
     volumes:
-      - '.:/app'
+      - '${PWD}/svc/parser:/app'
     entrypoint: 'sh -c "dotnet watch run"'
     ports:
-      - 8081:80
+      - 8082:80

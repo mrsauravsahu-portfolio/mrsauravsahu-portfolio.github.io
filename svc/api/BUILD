@@ -3,9 +3,7 @@ subinclude("//common/lint_eslint")
 
 sh_cmd(
   name = "compose",
-  srcs = glob(["src/**/*", "package*"], ["node_modules"]),
-  cmd = "docker-compose -f svc/api/docker-compose.yml --project-name $PROJECT \\\$@",
-  deps = ["//common/docker/dotnet-dev:image"],
+  cmd = "docker-compose -f svc/api/docker-compose.yml --project-name \${PROJECT} \\\$@",
 )
 
 docker_image(

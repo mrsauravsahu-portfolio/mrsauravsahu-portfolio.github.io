@@ -1,4 +1,4 @@
-version: '3.1'
+version: '3.8'
 
 networks:
   network:
@@ -6,15 +6,20 @@ networks:
 
 services:
   documentation:
-    networks:
-      - network
     build:
       context: .
       dockerfile: ../../common/docker/node-dev/dockerfile
       args:
         NODE_VERSION: ${NODE_VERSION}
     volumes:
-      - '.:/app'
-    entrypoint: 'sh -c "npm i && npm run dev"'
+      - '${PWD}/svc/documentation:/app'
+    environment:
+      PORT: 80
+      API_SERVICE_HOST: api
+      API_SERVICE_PORT: 80
+      PARSER_SERVICE_HOST: parser
+      PARSER_SERVICE_PORT: 80
+    working_dir: /app/svc/documentation
+    entrypoint: 'sh -c "npm install && npm run dev"'
     ports:
-      - 3001:80
+      - 9001:80

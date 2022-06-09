@@ -1,4 +1,4 @@
-version: '3.1'
+version: '3.8'
 
 networks:
   network:
@@ -6,16 +6,17 @@ networks:
 
 services:
   portfolio:
-    networks:
-      - network
     build:
       context: .
       dockerfile: ../../common/docker/node-dev/dockerfile
       args:
         NODE_VERSION: ${NODE_VERSION}
     volumes:
-      # TODO: Get store from a file service
-      - '${PWD}:/app'
-    entrypoint: 'sh -c "npm --prefix svc/portfolio i && npm --prefix svc/portfolio run dev -- --host"'
+      - '${PWD}/svc/portfolio:/app'
+      - '${PWD}/svc/store/data:/app/static/store'
+    environment:
+      PORT: 80
+      VITE_BLOGS_BASE_URL: http://blogs
+    entrypoint: 'sh -c "npm install && npm run dev -- --host --port 80"'
     ports:
-      - 3000:3000
+      - 3000:80

@@ -9,6 +9,8 @@ services:
     build:
       context: .
       dockerfile: ../../common/docker/dotnet-dev/dockerfile
+      args:
+        DOTNET_VERSION: ${DOTNET_VERSION}
     working_dir: /app
     volumes:
       - '${PWD}/svc/parser:/app'

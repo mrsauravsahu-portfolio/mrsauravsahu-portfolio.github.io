@@ -31,25 +31,25 @@ to deploy the app, create the services
 
 ```bash
 plz build //svc/...
-plz run parallel //svc/api //svc/documentation
+plz run parallel //svc/api //svc/docs
 ```
 
 ### [extra step for linux] push images to docker registry
 Because the images need to be on the microk8s docker registry for this to work, we need to push the images manually. (need to try and automate this later)
 ```
-plz run parallel //svc/api:api_push //svc/documentation:documentation_push
+plz run parallel //svc/api:api_push //svc/docs:documentation_push
 ```
 
 ### deploy to kubernetes
 ```
 kubectl apply -f ./.cicd # --> creates the kubernetes namespace
 
-plz run parallel //svc/api/k8s:k8s_push //svc/documentation/k8s:k8s_push
+plz run parallel //svc/api/k8s:k8s_push //svc/docs/k8s:k8s_push
 ```
 
 ### cleanup
 ```
-plz run parallel //svc/api/k8s:k8s_cleanup //svc/documentation/k8s:k8s_cleanup
+plz run parallel //svc/api/k8s:k8s_cleanup //svc/docs/k8s:k8s_cleanup
 
 kubectl delete -f .cicd
 ```
@@ -60,7 +60,7 @@ kubectl delete -f .cicd
 
 use this command to forward the port from the documentation service
 ```bash
-kubectl port-forward service/documentation-svc -n $K8S_NAMESPACE 3000:80
+kubectl port-forward service/docs-svc -n $K8S_NAMESPACE 3000:80
 ```
 you can navigate to `http://localhost:8080`
 
@@ -69,5 +69,5 @@ with microk8s on Linux, the services will directly be available on the NodePort 
 
 You can get the port with 
 ```
-kubectl -n mrsauravsahu describe svc/documentation-svc | grep NodePort
+kubectl -n mrsauravsahu describe svc/docs-svc | grep NodePort
 ```

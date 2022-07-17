@@ -3,7 +3,7 @@ subinclude ("//common/lint_dotnet")
 
 sh_cmd(
   name = "compose",
-  cmd = "docker-compose -f svc/parser/docker-compose.yml --project-name $PROJECT \\\$@",
+  cmd = "cat svc/parser/docker-compose.yml | sed 's/\\\${PROJECT}/${PROJECT}/g' | docker-compose --project-name \${PROJECT} -f - \\\$@",
 )
 
 docker_image(

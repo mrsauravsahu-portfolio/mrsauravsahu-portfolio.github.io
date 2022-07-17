@@ -1,11 +1,13 @@
 version: '3.8'
 
 networks:
-  network:
+  ${PROJECT}:
     name: ${PROJECT}
 
 services:
   blogs:
+    networks:
+      - ${PROJECT}
     build:
       context: .
       dockerfile: ../../common/docker/dotnet-dev/dockerfile

@@ -1,13 +1,13 @@
 version: '3.1'
 
 networks:
-  network:
+  ${PROJECT}:
     name: ${PROJECT}
 
 services:
   store:
     networks:
-      - network
+      - ${PROJECT}
     build:
       context: .
       dockerfile: ../../common/docker/node-dev/dockerfile

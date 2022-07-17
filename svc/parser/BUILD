@@ -1,6 +1,11 @@
 subinclude("///pleasings//docker")
 subinclude ("//common/lint_dotnet")
 
+sh_cmd(
+  name = "compose",
+  cmd = "cat svc/parser/docker-compose.yml | sed 's/\\\${PROJECT}/${PROJECT}/g' | docker-compose --project-name \${PROJECT} -f - \\\$@",
+)
+
 docker_image(
     name="parser",
     srcs = glob(["*"], ["bin", "obj", "dist"]),

@@ -1,0 +1,20 @@
+version: '3.1'
+
+networks:
+  ${PROJECT}:
+    name: ${PROJECT}
+
+services:
+  store:
+    networks:
+      - ${PROJECT}
+    build:
+      context: .
+      dockerfile: ../../common/docker/node-dev/dockerfile
+      args:
+        NODE_VERSION: ${NODE_VERSION}
+    volumes:
+      - '.:/app'
+    entrypoint: 'sh -c "npm i && npm start"'
+    ports:
+      - 8083:80

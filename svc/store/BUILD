@@ -1,6 +1,11 @@
 subinclude("///pleasings//docker")
 subinclude("//common/lint_eslint")
 
+sh_cmd(
+  name = "compose",
+  cmd = "cat svc/store/docker-compose.yml | sed 's/\\\${PROJECT}/${PROJECT}/g' | docker-compose --project-name \${PROJECT} -f - \\\$@",
+)
+
 docker_image(
   name = "store",
   srcs = glob(["*"], ["node_modules", "dist"]),

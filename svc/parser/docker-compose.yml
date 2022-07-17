@@ -1,0 +1,21 @@
+version: '3.8'
+
+networks:
+  ${PROJECT}:
+    name: ${PROJECT}
+
+services:
+  parser:
+    networks:
+      - ${PROJECT}
+    build:
+      context: .
+      dockerfile: ../../common/docker/dotnet-dev/dockerfile
+      args:
+        DOTNET_VERSION: ${DOTNET_VERSION}
+    working_dir: /app
+    volumes:
+      - '${PWD}/svc/parser:/app'
+    entrypoint: 'sh -c "dotnet watch run"'
+    ports:
+      - 8082:80

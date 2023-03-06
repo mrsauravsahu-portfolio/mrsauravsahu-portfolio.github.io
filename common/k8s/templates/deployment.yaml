@@ -60,9 +60,7 @@ spec:
             {{- end }}
           {{- end }}
           {{- if eq .Values.environment "LOCAL_DEVELOPMENT" }}
-          {{- if .Values.pod.workingDir }}
           workingDir: "{{ .Values.pod.workingDir | default "/app" }}"
-          {{- end }}
           {{- end }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:

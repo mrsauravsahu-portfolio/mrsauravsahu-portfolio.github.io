@@ -4,13 +4,11 @@
 
 replicaCount: 1
 
-enableOpenTelemetry: true
-
 image:
-  repository: mcr.microsoft.com/dotnet/sdk
+  repository: payobills-bills
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "5.0"
+  tag: ""
 
 imagePullSecrets: []
 nameOverride: ""
@@ -25,40 +23,24 @@ serviceAccount:
   # If not set and create is true, a name is generated using the fullname template
   name: ""
 
-environment: LOCAL_DEVELOPMENT
+podVolumes:
+  - name: bills-data
+    hostPath:
+      path: /home/mrsauravsahu/Code/payobills/data/bills-data
 
-pod:
-  # command: ["bash", "-c", "'dotnet run --no-launch-profile'"]
-  command: ["bash", "-c", "'dotnet run --no-launch-profile | tee /var/log/app.log'"]
-  workingDir: "/app/mrsauravsahu.api"
-  annotations: {}
-  volumes:
-    - name: code
-      hostPath:
-        pathPrefix: apps/blogs/src
-    - name: blogs-store
-      hostPath:
-        pathPrefix: svc/store/data
-  volumeMounts:
-    - mountPath: /app
-      name: code
-    - mountPath: /blogs-store
-      name: blogs-store
-  env:
-    - name: ASPNETCORE_ENVIRONMENT
-      value: DEVELOPMENT
-    - name: ASPNETCORE_URLS
-      value: "http://0.0.0.0:80"
-    - name: Blogs__Version
-      value: "0.1.0"
-    - name: Blogs__ContactEmail
-      value: mrsauravsahu@outlook.com
-    - name: Blogs__AppName
-      value: "@mrsauravsahu/blogs"
-    - name: Files__BasePath
-      value: "/blogs-store"
-    - name: Blogs__StoreBasePath
-      value: "/blogs-store"
+podVolumeMounts:
+  - mountPath: /data
+    name: bills-data
+
+podEnv:
+  - name: ASPNETCORE_ENVIRONMENT
+    value: DEVELOPMENT
+  - name: BILLS_DB_PATH
+    value: /data/bills.sqlite
+  - name: BILLS_ALLOWED_ORIGINS
+    value: "http://localhost:5173"
+
+podAnnotations: {}
 
 podSecurityContext: {}
   # fsGroup: 2000
@@ -72,9 +54,8 @@ securityContext: {}
   # runAsUser: 1000
 
 service:
-  type: NodePort
+  type: ClusterIP
   port: 80
-  nodePort: 30001
 
 ingress:
   enabled: false

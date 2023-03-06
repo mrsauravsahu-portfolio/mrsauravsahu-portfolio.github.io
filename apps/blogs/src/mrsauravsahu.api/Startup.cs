@@ -58,9 +58,12 @@ namespace mrsauravsahu.api
             services.AddSingleton(options => options.GetConfigService<GithubServiceOptions>());
 
             services.AddDbContext<BlogsContext>(options =>
-                options.UseFileContextDatabase<CSVSerializer, DefaultFileManager>(
+                {
+                    options.UseFileContextDatabase<CSVSerializer, DefaultFileManager>(
                     location: Configuration.GetValue<string>("Files:BasePath")
-                ));
+                );
+                System.Console.WriteLine($"Configuring file db at {Configuration.GetValue<string>("Files:BasePath")}");
+        });
 
             services.Configure<LocalFileServiceOptions>(Configuration.GetSection("Files"));
             services.AddSingleton<IFileSystem, FileSystem>();
@@ -77,7 +80,8 @@ namespace mrsauravsahu.api
                 .AddGraphQLServer()
                 .AddQueryType<Query>()
                 .AddMutationType<Mutation>()
-                .AddSorting();
+                .AddSorting()
+                .ModifyRequestOptions(opt => opt.IncludeExceptionDetails = true);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

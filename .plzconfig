@@ -15,7 +15,8 @@ moduledir = third_party.python
 default-docker-repo = mrsauravsahu
 
 [build]
-passenv = PROJECT
-passenv = PATH
-passenv = NODE_VERSION
-passenv = DOTNET_VERSION
+PassEnv = PROJECT
+PassEnv = NODE_VERSION
+PassEnv = DOTNET_VERSION
+PassEnv = K8S_NAMESPACE
+PassEnv = PROJECT_ROOT

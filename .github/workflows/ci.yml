@@ -1,53 +1,114 @@
-name: 'ci workflow'
-
-env:
-  MAIN_BRANCH: main
-  NODE_VERSION: 16.14.2
+name: 'ci'
 
 on:
   pull_request:
     branches:
+    - develop
     - main
+  push:
+    branches:
+    - develop
+    - main
+    - 'release/**'
+    - 'hotfix/**'
+
+env:
+  GITVERSION: 'gittools/gitversion:5.10.0-alpine.3.14-6.0'
+  MAIN_BRANCHES: ("develop" "main")
+  GITVERSION_TAG_PROPERTY_PULL_REQUESTS: .SemVer
+  GITVERSION_TAG_PROPERTY_DEFAULT: .SemVer
+  GITVERSION_TAG_PROPERTY_DEVELOP: .SemVer
+  GITVERSION_TAG_PROPERTY_RELEASE: .SemVer
+  GITVERSION_TAG_PROPERTY_HOTFIX: .SemVer
+  GITVERSION_TAG_PROPERTY_MAIN: .MajorMinorPatch
+  GITVERSION_REPO_TYPE: MONOREPO
+  GITVERSION_CONFIG_SINGLE_APP: '/repo/.cicd/common/.gitversion.yml'
+  GITVERSION_CONFIG_MONOREPO: '/repo/apps/${svc}/.gitversion.yml'
+  PROJECT_NAME: payobills
 
 jobs:
   ci:
-    runs-on: ubuntu-latest
-
+    name: ci
+    runs-on: ubuntu-22.04
     steps:
-      - name: checkout to head branch for PR
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
+    - name: Setup please.build
+      uses: sagikazarmark/setup-please-action@v0
 
-      - uses: actions/setup-node@v2
-        with:
-          node-version: ${{ env.NODE_VERSION }}
+    - name: Checkout
+      uses: actions/checkout@v2
 
-      - name: setup please.build
-        uses: sagikazarmark/setup-please-action@v0
+    - name: Fetch all history for all tags and branches
+      run: |
+        git fetch --unshallow
+        git checkout main && git checkout -
+        git checkout develop && git checkout -
 
-      - name: check targets
-        id: check_targets
-        run: |
-          BUILD_TARGETS=$(for i in `ls -1 svc`; do echo -n "(//svc/$i)|"; done | sed 's/|$//')
-          PLZ_CHANGES=`plz query changes -s origin/${{ env.MAIN_BRANCH }}`
-          CHANGED_TARGETS=`echo $PLZ_CHANGES | (egrep -o $BUILD_TARGETS || true)`
-          SERVICES=`echo $CHANGED_TARGETS | egrep -o $BUILD_TARGETS | sort | uniq`
-          SERVICES_SINGLE_LINE=`echo $SERVICES | tr '\n' ' '`
-          echo "Please changes: $PLZ_CHANGES"
-          echo "Services to build: '$SERVICES'"
-          echo "Services to build: '$SERVICES_SINGLE_LINE'"
-          echo "::set-output name=SERVICES::$SERVICES"
-          echo "::set-output name=SERVICES_SINGLE_LINE::$SERVICES_SINGLE_LINE"
+    - name: Checkout to branch
+      run: . ./.cicd/common/semver-yeasy.sh checkout
 
-      - name: lint targets
-        if: steps.check_targets.outputs.SERVICES != ''
-        run: plz run parallel `echo ${{ steps.check_targets.outputs.SERVICES_SINGLE_LINE }} | sed 's|//svc/[a-z\-]*|&:lint|g'`
+    - uses: actions/cache@v2
+      with:
+        path: plz-out
+        key: plz-out
 
-      - name: run tests
-        if: steps.check_targets.outputs.SERVICES_SINGLE_LINE != ''
-        run: plz test `echo ${{ steps.check_targets.outputs.SERVICES_SINGLE_LINE }} | sed 's|//svc/[a-z\-]*|&:test|g'`
+    - name: Calculate changed services
+      id: calculate_changed_services
+      run: . ./.cicd/common/semver-yeasy.sh changed
 
-      - name: build targets
-        if: steps.check_targets.outputs.SERVICES != ''
-        run: plz run parallel `echo ${{ steps.check_targets.outputs.SERVICES_SINGLE_LINE }}`
+    - name: Generate other targets
+      id: check_targets
+      env:
+        SERVICES: ${{ fromJSON(steps.calculate_changed_services.outputs.changed_services) }}
+      run: |
+        echo SERVICES="${SERVICES}"
+        SERVICES_SINGLE_LINE=`echo $SERVICES | tr '\n' ' '`
+        echo SERVICES_SINGLE_LINE="${SERVICES_SINGLE_LINE}"
+        DOCKER_BUILD_TARGETS=`echo "${SERVICES}" | sed -e "s|^|//|" -e "s|$|:docker|" | tr '\n' ' '`
+        IMAGE_SCAN_TARGETS=`echo "${SERVICES}" | sed -e "s|^|//|" -e "s|$|:image_scan|" | tr '\n' ' '`
+        echo DOCKER_BUILD_TARGETS="${DOCKER_BUILD_TARGETS}"
+        echo IMAGE_SCAN_TARGETS="${IMAGE_SCAN_TARGETS}"
+        echo "::set-output name=DOCKER_BUILD_TARGETS::$DOCKER_BUILD_TARGETS"
+        echo "::set-output name=IMAGE_SCAN_TARGETS::$IMAGE_SCAN_TARGETS"
+
+    # - name: lint targets
+    #   if: steps.check_targets.outputs.SERVICES != ''
+    #   run: |
+    #     # TODO: figure out how to pass different env for different targets
+    #     for i in ${{ steps.check_targets.outputs.SERVICES }}; do
+    #       PLZ_OVERRIDES=buildenv.SECRET_SERVICE_NAME:"$i" plz run $i:lint
+    #     done
+
+    # - name: run tests
+    #   if: steps.check_targets.outputs.SERVICES_SINGLE_LINE != ''
+    #   run: plz test `echo ${{ steps.check_targets.outputs.SERVICES_SINGLE_LINE }} | sed 's|//apps/[a-z]*|&/tests|g'`
+
+    - name: Build targets
+      if: fromJSON(steps.calculate_changed_services.outputs.changed_services) != ''
+      run: |
+        echo ${{ steps.check_targets.outputs.DOCKER_BUILD_TARGETS }} | xargs plz run parallel
+
+    - name: Container Scanning
+      if: fromJSON(steps.calculate_changed_services.outputs.changed_services) != ''
+      run: |
+        echo ${{ steps.check_targets.outputs.IMAGE_SCAN_TARGETS }} | xargs -n 1 sh -c 'echo $0; echo ----; plz run $0; echo ----;'
+
+    - name: Calculate versions
+      id: calculate_service_versions
+      env:
+        SEMVERYEASY_CHANGED_SERVICES: ${{ fromJSON(steps.calculate_changed_services.outputs.changed_services) }}
+      run: . ./.cicd/common/semver-yeasy.sh calculate-version
+
+    - name: Update PR description
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SEMVERY_YEASY_PR_BODY: ${{ fromJSON(steps.calculate_service_versions.outputs.PR_BODY) }}
+      if: ${{ github.event_name == 'pull_request' }}
+      run: . ./.cicd/common/semver-yeasy.sh update-pr
+
+    - name: Tag build
+      if: ${{ github.event_name == 'push' && (steps.check_targets.outputs.SERVICES != '') && (startsWith(steps.calculate_changed_services.outputs.diff_dest, 'release') || startsWith(steps.calculate_changed_services.outputs.diff_dest, 'hotfix') || contains(env.MAIN_BRANCHES, steps.calculate_changed_services.outputs.diff_dest)) }}
+      env:
+        DIFF_DEST: ${{ steps.calculate_changed_services.outputs.DIFF_DEST }}
+        SEMVERYEASY_CHANGED: ${{ steps.calculate_changed_services.outputs.changed }}
+        SEMVERYEASY_CHANGED_SERVICES: ${{ fromJSON(steps.calculate_changed_services.outputs.changed_services) }}
+      run: . ./.cicd/common/semver-yeasy.sh tag

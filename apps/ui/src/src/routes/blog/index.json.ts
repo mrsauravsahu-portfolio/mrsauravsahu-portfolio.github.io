@@ -37,8 +37,6 @@ export const get = async () => {
     `;
     const allBlogsResponse = await urqlClient.query(gqlQuery, {after : state.endCursor}).toPromise()
 
-    console.log("query", gqlQuery)
-    console.log("resp", allBlogsResponse)
     blogs = [...blogs, ...(allBlogsResponse.data.blogs.nodes || [])]
     state = {
       hasNextPage: allBlogsResponse.data.blogs.pageInfo.hasNextPage,

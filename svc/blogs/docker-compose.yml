@@ -17,7 +17,8 @@ services:
       - '${PWD}/svc/blogs:/app'
       - '${PWD}/svc/store:/store'
       # - '${PWD}/svc/store/data:/app/static/store'
-      - '/app/node_modules'
+      - '/app/src/mrsauravsahu.api/obj'
+      - '/app/src/mrsauravsahu.api/bin'
     environment:
       PORT: 80
       ASPNETCORE_ENVIRONMENT: DEVELOPMENT

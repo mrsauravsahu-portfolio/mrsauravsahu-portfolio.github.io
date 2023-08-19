@@ -24,11 +24,14 @@ using Microsoft.OpenApi.Models;
 using Sieve.Services;
 using mrsauravsahu.api.contracts;
 using HotChocolate.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace mrsauravsahu.api
 {
     public class Startup
     {
+        // private readonly IWebHostEnvironment _env;
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -57,10 +60,13 @@ namespace mrsauravsahu.api
             services.Configure<GithubServiceOptions>(Configuration.GetSection("Github"));
             services.AddSingleton(options => options.GetConfigService<GithubServiceOptions>());
 
-            services.AddDbContext<BlogsContext>(options =>
-                options.UseFileContextDatabase<CSVSerializer, DefaultFileManager>(
-                    location: Configuration.GetValue<string>("Files:BasePath")
-                ));
+            services.AddDbContext<BlogsContext>((DbContextOptionsBuilder options) =>
+                {
+                    options.UseFileContextDatabase<CSVSerializer, DefaultFileManager>(
+                    location: Configuration.GetValue<string>("Files:BasePath"));
+
+                    // Console.WriteLine($"get service hash code {options.GetServiceProviderHashCode()}");
+                });
 
             services.Configure<LocalFileServiceOptions>(Configuration.GetSection("Files"));
             services.AddSingleton<IFileSystem, FileSystem>();
@@ -77,7 +83,8 @@ namespace mrsauravsahu.api
                 .AddGraphQLServer()
                 .AddQueryType<Query>()
                 .AddMutationType<Mutation>()
-                .AddSorting();
+                .AddSorting()
+                .ModifyRequestOptions(opt => opt.IncludeExceptionDetails = true);  
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

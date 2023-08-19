@@ -13,14 +13,27 @@ using HotChocolate.Types;
 using HotChocolate.Types.Pagination;
 using Microsoft.EntityFrameworkCore;
 using Sieve.Models;
+using System;
 
 namespace mrsauravsahu.api.contracts
 {
     public class Query
     {
         [UsePaging]
-        [UseSorting]
-        public IQueryable<Blog> GetBlogs([Service] BlogsContext dbContext) => dbContext.Blogs.OrderByDescending(p => p.CreatedAt);
+        // [UseSorting]
+        public IQueryable<Blog> GetBlogs([Service] BlogsContext dbContext)
+        {
+            try
+            {
+                var blogs = dbContext.Blogs.OrderByDescending(p => p.CreatedAt);
+                return blogs;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return new List<Blog>().AsQueryable();
+            }
+        }
 
         public IQueryable<Link> GetLinks([Service] BlogsContext dbContext) => dbContext.Links;
 

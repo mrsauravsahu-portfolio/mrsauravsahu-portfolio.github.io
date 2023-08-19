@@ -39,9 +39,11 @@
 
 <section class="home page-section" id="home">
 	<div class="bio">
-		<p>
-			software engineer by profession; <br />
-			photographer, cook and a student at heart.
+		<p class='hero'>
+			software engineer; <br />
+			photographer; <br />
+			language learner; <br />
+			cook; <br />
 		</p>
 	</div>
 </section>
@@ -118,7 +120,7 @@
 	{#each health as svcHealth}
 		<!-- add poweredBy property to health -->
 		<!-- get versions for portfolio dynamically -->
-		<h2>portfolio • v0.0.1 • SvelteKit</h2>
+		<h2>@mrsauravsahu/portfolio • v0.1.0 • SvelteKit</h2>
 		<h2>{svcHealth.data.name} • {svcHealth.data.version} • .NET 5</h2>
 	{/each}
 </section>
@@ -130,7 +132,7 @@
 		background: url('/img/mrss-silhouette.svg');
 		background-repeat: no-repeat;
 		background-position: right bottom;
-		background-size: 20%;
+		background-size: 25%;
 	}
 
 	.bio {
@@ -183,7 +185,7 @@
 
 	.contact > p {
 		padding: 0;
-		margin: .5rem 0;
+		margin: 0.5rem 0;
 	}
 
 	.contact a:hover {

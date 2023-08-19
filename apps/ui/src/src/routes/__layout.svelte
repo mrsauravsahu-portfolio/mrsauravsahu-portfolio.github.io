@@ -15,8 +15,8 @@
 </main>
 
 <style>
-	@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@200;500;800&display=swap');
-
+	@import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@200;500;800&display=swap');
+	@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
 	:global(html) {
 		margin: 0;
 		background-color: var(--bg);
@@ -27,9 +27,14 @@
 		height: 100%;
 	}
 
-	:global(*) {
-		font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+	:global(h1, h2, h3, h4, h5, h6, button, a, .hero) {
+		font-family: 'Unbounded', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
 			Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	}
+	:global(div, span) {
+		font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+			Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+			font-weight: 100;
 	}
 
 	:root {
@@ -43,6 +48,16 @@
 		height: 100vh;
 		overflow-y: scroll;
 	}
+
+	/* region: hide scrollbar */
+	main {
+		-ms-overflow-style: none;
+		scrollbar-width: none;
+	}
+	main::-webkit-scrollbar {
+		display: none;
+	}
+	/* endregion: hide scrollbar */
 
 	:global(a),
 	:global(a:visited) {
@@ -79,7 +94,7 @@
 
 	:global(hr) {
 		margin: 0;
-		padding: 0.0625rem;
+		padding: 0.03125rem;
 		background-color: black;
 		stroke-width: 0;
 		border: none;
@@ -96,7 +111,7 @@
 
 	@media (min-width: 90rem) {
 		main {
-			padding: 0 calc((100vw - 90rem)/2);
+			padding: 0 calc((100vw - 90rem) / 2);
 		}
 	}
 </style>

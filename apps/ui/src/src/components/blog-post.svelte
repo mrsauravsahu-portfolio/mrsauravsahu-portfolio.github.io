@@ -61,11 +61,12 @@
 
 	@media (max-width: 40rem) {
 		.blog-post {
-			width: 70vw;
+			width: 100%;
 		}
 
 		a {
 			margin: 1rem 0;
+			width: 100%;
 		}
 	}
 
@@ -79,5 +80,6 @@
 		.blog-post {
 			padding: 0.75rem;
 		}
+		a{			width: 100%;}
 	}
 </style>

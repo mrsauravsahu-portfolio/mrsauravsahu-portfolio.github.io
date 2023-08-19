@@ -7,8 +7,8 @@
 
 <nav class:nav__open={isNavOpen}>
 	<div class="navmain">
-		<a href="/#home" class="brand" on:click={() => isNavOpen=false}>
-			<img src="/img/brand.svg" alt="brand" />
+		<a href="/#home" class="brand" on:click={() => (isNavOpen = false)}>
+			<span class='hero'>S</span>
 		</a>
 		<button
 			on:click={() => {
@@ -19,10 +19,9 @@
 		</button>
 	</div>
 	<ul class="navlinks" class:navlinks__closed={!isNavOpen}>
-		<li class="navlink"><a  on:click={() => isNavOpen=false} href="/#blog">recent blogs</a></li>
-		<li class="navlink"><a  on:click={() => isNavOpen=false} href="/#contact">contact</a></li>
-		<li class="navlink"><a  on:click={() => isNavOpen=false} href="/#about">about</a></li>
-		<li class="navlink"><a  on:click={() => isNavOpen=false} href="https://poly.mrsauravsahu.tech">polywork</a></li>
+		<li class="navlink hero"><a on:click={() => (isNavOpen = false)} href="/#blog">recent blogs</a></li>
+		<li class="navlink hero"><a on:click={() => (isNavOpen = false)} href="/#contact">contact</a></li>
+		<li class="navlink hero"><a on:click={() => (isNavOpen = false)} href="/#about">about</a></li>
 	</ul>
 </nav>
 
@@ -35,7 +34,7 @@
 		background-color: var(--accent);
 		padding: 0;
 		margin: 0.5rem;
-		border-radius: 1rem;
+		/* border-radius: 1rem; */
 		height: 4rem;
 		transition: 0.2s ease-in-out height;
 		z-index: 100;
@@ -45,11 +44,19 @@
 		padding: 0 1rem;
 	}
 
+	.brand span {
+		font-weight: 900;
+		font-size: 2.5rem;
+	}
+	/* .brand .last { font-weight: 900;} */
+
 	button {
 		display: none;
 		border: none;
 		background: none;
 		padding: 0 2rem;
+		cursor: pointer;
+		height: 100%;
 	}
 
 	.navlinks {
@@ -66,9 +73,10 @@
 
 	a,
 	a:visited {
+		font-size: 0.8rem;
 		color: var(--bg);
 		text-decoration: none;
-		padding: 0 2rem;
+		padding: 0 1.5rem;
 		cursor: pointer;
 		transform: translateY(0);
 		transition: transform 0.3s ease-in-out;

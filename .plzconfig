@@ -20,3 +20,14 @@ PassEnv = NODE_VERSION
 PassEnv = DOTNET_VERSION
 PassEnv = K8S_NAMESPACE
 PassEnv = PROJECT_ROOT
+
+[parse]
+preloadsubincludes = ///shell//build_defs:shell
+preloadsubincludes = ///docker//build_defs:docker
+preloadsubincludes = //common/lint_eslint
+
+[Plugin "shell"]
+Target = //plugins:shell
+
+[Plugin "docker"]
+Target = //plugins:docker

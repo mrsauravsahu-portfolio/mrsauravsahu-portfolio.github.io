@@ -10,12 +10,13 @@ services:
       - ${PROJECT}
     build:
       context: .
-      dockerfile: ../../common/docker/node-dev/dockerfile
+      dockerfile: ${PWD}/common/docker/node-dev.dockerfile
       args:
         NODE_VERSION: ${NODE_VERSION}
     volumes:
       - '${PWD}/svc/portfolio:/app'
       - '${PWD}/svc/store/data:/app/static/store'
+      - '/app/node_modules'
     environment:
       PORT: 80
       VITE_BLOGS_BASE_URL: http://blogs

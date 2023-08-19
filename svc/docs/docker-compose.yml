@@ -10,7 +10,7 @@ services:
       - ${PROJECT}
     build:
       context: .
-      dockerfile: ../../common/docker/node-dev/dockerfile
+      dockerfile: ${PWD}/common/docker/node-dev.dockerfile
       args:
         NODE_VERSION: ${NODE_VERSION}
     volumes:

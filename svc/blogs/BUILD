@@ -1,8 +1,10 @@
+# subinclude("///pleasings//docker")
+
 svc=split_path(package_name())[-1]
 
 sh_cmd(
   name = "compose",
-  cmd = "cat svc/blogs/docker-compose.yml | sed 's/\\\${PROJECT}/${PROJECT}/g' | docker compose --project-name \${PROJECT} -f - \\\$@",
+  cmd = "cat svc/blogs/docker-compose.yml | sed 's/\\\${PROJECT}/${PROJECT}/g' | docker-compose --project-name \${PROJECT} -f - \\\$@",
 )
 
 docker_image(

@@ -15,17 +15,11 @@ services:
         NODE_VERSION: ${NODE_VERSION}
     volumes:
       - '${PWD}/svc/blogs:/app'
-      - '${PWD}/svc/store:/store'
-      # - '${PWD}/svc/store/data:/app/static/store'
+      - '${PWD}/svc/store/data:/app/static/store'
       - '/app/node_modules'
     environment:
       PORT: 80
-      ASPNETCORE_ENVIRONMENT: DEVELOPMENT
-      ASPNETCORE_URLS: "http://0.0.0.0:80"
-      Blogs__Version: "0.1.0"
-      Blogs__ContactEmail: mrsauravsahu@outlook.com
-      Blogs__AppName: "@mrsauravsahu/blogs"
-      Files__BasePath: "/store/data"
-    entrypoint: 'sh -c "dotnet watch run --project /app/src/mrsauravsahu.api"'
+      VITE_BLOGS_BASE_URL: http://blogs
+    entrypoint: 'sh -c "dotnet watch run -p mrsauravsahu.api"'
     ports:
       - 8081:80

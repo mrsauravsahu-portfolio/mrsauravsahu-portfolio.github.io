@@ -4,13 +4,13 @@
 
 replicaCount: 1
 
-enableOpenTelemetry: true
+enableOpenTelemetry: false
 
 image:
   repository: mcr.microsoft.com/dotnet/sdk
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "6.0"
+  tag: "8.0"
 
 imagePullSecrets: []
 nameOverride: ""
@@ -29,16 +29,21 @@ environment: LOCAL_DEVELOPMENT
 
 pod:
   # command: ["bash", "-c", "'dotnet run --no-launch-profile'"]
-  command: ["bash", "-c", "'dotnet run --no-launch-profile | tee /var/log/app.log'"]
+  command: ["bash", "-c", "'dotnet run --project /app/mrsauravsahu.api --no-launch-profile | tee /var/log/app.log'"]
   workingDir: "/app/mrsauravsahu.api"
   annotations: {}
   volumes:
     - name: code
       hostPath:
         pathPrefix: apps/blogs/src
+    - name: data
+      hostPath:
+        pathPrefix: svc/store
   volumeMounts:
     - mountPath: /app
       name: code
+    - mountPath: /store
+      name: data
   env:
     - name: ASPNETCORE_ENVIRONMENT
       value: DEVELOPMENT
@@ -50,6 +55,8 @@ pod:
       value: mrsauravsahu@outlook.com
     - name: Blogs__AppName
       value: "@mrsauravsahu/blogs"
+    - name: Files__BasePath
+      value: "/store/data"
 
 podSecurityContext: {}
   # fsGroup: 2000

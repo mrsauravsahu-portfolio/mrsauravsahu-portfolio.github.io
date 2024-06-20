@@ -16,6 +16,7 @@ default-docker-repo = mrsauravsahu
 
 [build]
 PassEnv = PROJECT
+PassEnv = PROJECT_NAME
 PassEnv = NODE_VERSION
 PassEnv = DOTNET_VERSION
 PassEnv = K8S_NAMESPACE

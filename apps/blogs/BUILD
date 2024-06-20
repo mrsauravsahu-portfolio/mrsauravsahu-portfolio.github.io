@@ -2,6 +2,12 @@ subinclude("@pleasings//docker")
 
 svc=split_path(package_name())[-1]
 
+
+sh_cmd(
+  name = "compose",
+  cmd = "cat apps/blogs/docker-compose.yml | sed 's/\\\${PROJECT}/${PROJECT}/g' | docker compose --project-name \${PROJECT} -f - \\\$@",
+)
+
 docker_image(
     name="docker",
     image=svc,

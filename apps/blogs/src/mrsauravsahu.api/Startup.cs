@@ -17,13 +17,14 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Propfull.AspNet.Config;
 using mrsauravsahu.data.context;
-using FileContextCore;
-using FileContextCore.Serializer;
-using FileContextCore.FileManager;
 using Microsoft.OpenApi.Models;
 using Sieve.Services;
 using mrsauravsahu.api.contracts;
 using HotChocolate.Data;
+using Data.Common.Utils.ConnectionString;
+using Microsoft.EntityFrameworkCore;
+using kDg.FileBaseContext.Extensions;
+using kDg.FileBaseContext.Serializers;
 
 namespace mrsauravsahu.api
 {
@@ -57,11 +58,24 @@ namespace mrsauravsahu.api
             services.Configure<GithubServiceOptions>(Configuration.GetSection("Github"));
             services.AddSingleton(options => options.GetConfigService<GithubServiceOptions>());
 
-            services.AddDbContext<BlogsContext>(options =>
-                options.UseFileContextDatabase<CSVSerializer, DefaultFileManager>(
-                    location: Configuration.GetValue<string>("Files:BasePath")
-                ));
+            services.AddSingleton<BlogsContext>((_) => new BlogsContext(Configuration.GetValue<string>("Files:BasePath")));
+            // services.AddDbContext<BlogsContext>();
+            // options =>
+            // {
+            //     options
+            //     .UseFileBaseContextDatabase(Configuration.GetValue<string>("Files:BasePath"));
+                
+            //     // , null, services =>
+            //     // {
+            //     //     // if(csvRowSerializerAdded) return;
+            //     //     // services.AddMockFileSystem(_fileSystem);
+            //     //     // csvRowSerializerAdded = true;
+            //     // });
+            //     // var connectionString = new FileConnectionString() { DataSource = Configuration.GetValue<string>("Files:BasePath") };
+            //     // options.UseCsv(connectionString);
+            // });
 
+            services.AddCsvRowDataSerializer();
             services.Configure<LocalFileServiceOptions>(Configuration.GetSection("Files"));
             services.AddSingleton<IFileSystem, FileSystem>();
             services.AddSingleton<LocalFileService>();
@@ -77,7 +91,8 @@ namespace mrsauravsahu.api
                 .AddGraphQLServer()
                 .AddQueryType<Query>()
                 .AddMutationType<Mutation>()
-                .AddSorting();
+                .AddSorting()
+                .AddDiagnosticEventListener<ErrorLoggingDiagnosticsEventListener>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -60,10 +60,10 @@ namespace mrsauravsahu.services
                 if (!directoryExists) fileSystem.Directory.CreateDirectory(containerPath);
 
                 var filePath = fileSystem.Path.Combine(new[] { config.BasePath, container, name });
-                using (var fileStream = fileSystem.FileStream.Create(filePath, FileMode.Create, FileAccess.Write))
-                {
-                    stream.WriteTo(fileStream);
-                }
+                // using (var fileStream = fileSystem.FileStream.Create(filePath, FileMode.Create, FileAccess.Write))
+                // {
+                //     stream.WriteTo(fileStream);
+                // }
 
             });
         }

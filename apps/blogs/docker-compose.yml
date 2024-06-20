@@ -1,23 +1,23 @@
 version: '3.8'
 
 networks:
-  ${PROJECT}:
-    name: ${PROJECT}
+  mrsauravsahu:
+    name: mrsauravsahu
 
 services:
   blogs:
     networks:
-      - ${PROJECT}
+      - mrsauravsahu
     build:
       context: .
       dockerfile: ${PWD}/common/docker/dotnet-dev.dockerfile
-      args:
-        NODE_VERSION: ${NODE_VERSION}
+      # args:
+      #   NODE_VERSION: ${NODE_VERSION}
     volumes:
-      - '${PWD}/svc/blogs:/app'
+      - '${PWD}/apps/blogs:/app'
       - '${PWD}/svc/store:/store'
       # - '${PWD}/svc/store/data:/app/static/store'
-      - '/app/node_modules'
+      # - '/app/node_modules'
     environment:
       PORT: 80
       ASPNETCORE_ENVIRONMENT: DEVELOPMENT

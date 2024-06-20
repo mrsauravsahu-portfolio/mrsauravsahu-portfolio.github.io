@@ -1,3 +1,4 @@
+{{- if not (eq .Values.type "expose-external-service") }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -48,11 +49,7 @@ spec:
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
-          {{- if .Values.image.fullName }}
-          image: "{{ .Values.image.fullName }}"
-          {{- else }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
-          {{- end }}
           {{- if .Values.pod.command }}
           command:
             {{- range .Values.pod.command }}
@@ -60,9 +57,7 @@ spec:
             {{- end }}
           {{- end }}
           {{- if eq .Values.environment "LOCAL_DEVELOPMENT" }}
-          {{- if .Values.pod.workingDir }}
-          workingDir: "{{ .Values.pod.workingDir | default "/app" }}"
-          {{- end }}
+          workingDir: "/app"
           {{- end }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
@@ -95,7 +90,7 @@ spec:
             {{- toYaml .Values.resources | nindent 12 }}
         {{- if .Values.enableOpenTelemetry }}
         - name: opentelemetry-collector
-          image: otel/opentelemetry-collector-contrib:0.72.0
+          image: otel/opentelemetry-collector-contrib:0.98.0
           command:
           - /otelcol-contrib
           - --config=/conf/relay.yaml
@@ -108,7 +103,11 @@ spec:
             - name: OTEL_RESOURCE_ATTRIBUTES_POD_NAME # set pod name as resource attribute for k8s metadata processor
               valueFrom:
                 fieldRef:
-                  fieldPath: metadata.name 
+                  fieldPath: metadata.name
+            - name: MY_POD_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
         {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
@@ -122,3 +121,4 @@ spec:
       tolerations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+{{- end }}

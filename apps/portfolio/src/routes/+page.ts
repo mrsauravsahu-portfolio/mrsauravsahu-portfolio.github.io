@@ -1,17 +1,16 @@
-import {urqlClient} from '../../setup/urql'
-import {variables} from '$lib/variables'
+import { urqlClient } from '../setup/urql'
 
-export const get = async () => {
-  const dataUrl = `${variables.blogsBaseUrl}/api/blogs?sorts=-createdAt`
-  console.log(`Fetching blogs from: ${dataUrl}`)
+export const load = async () => {
+  console.log(`Fetching blogs from: ${urqlClient.url}`)
 
   let state = {
     endCursor: undefined,
     hasNextPage: true,
   }
 
-  let blogs = []
+  let blogs: any[] = []
 
+  console.log("____________________STARTING_____________________")
   do {
     // eslint-disable-next-line no-await-in-loop
     const allBlogsResponse = await urqlClient.query(`
@@ -35,21 +34,20 @@ export const get = async () => {
                 }
             }
         }
-    `, {after: state.endCursor}).toPromise()
+    `, { after: state.endCursor }).toPromise()
 
-    blogs = [...blogs, ...(allBlogsResponse.data.blogs.nodes || [])]
+    // console.log(allBlogsResponse?.data)
+    blogs = [...blogs, ...(allBlogsResponse?.data?.blogs?.nodes || [])]
     state = {
-      hasNextPage: allBlogsResponse.data.blogs.pageInfo.hasNextPage,
-      endCursor: allBlogsResponse.data.blogs.pageInfo.endCursor,
+      hasNextPage: allBlogsResponse?.data?.blogs?.pageInfo?.hasNextPage || false,
+      endCursor: allBlogsResponse?.data?.blogs?.pageInfo?.endCursor || undefined,
     }
   } while (state.hasNextPage)
 
+    console.log("____________________END_____________________")
+
   return {
-    body: {
-      blogs,
-      totalCount: blogs.length,
-    },
-    status: 200,
-    headers: {'Content-Type': 'application/json'},
+    blogs,
+    totalCount: blogs.length,
   }
 }

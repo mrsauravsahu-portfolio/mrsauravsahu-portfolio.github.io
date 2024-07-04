@@ -1,6 +1,7 @@
 <script>
 	import Icon from 'svelte-awesome/components/Icon.svelte';
 	import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
+	// import brandImg from '/img/brand.svg';
 
 	let isNavOpen = false;
 </script>
@@ -8,7 +9,8 @@
 <nav class:nav__open={isNavOpen}>
 	<div class="navmain">
 		<a href="/#home" class="brand" on:click={() => isNavOpen=false}>
-			<img src="/img/brand.svg" alt="brand" />
+			<!-- <img src={brandImg} alt="brand" /> -->
+			 <span>S</span>
 		</a>
 		<button
 			on:click={() => {
@@ -22,11 +24,11 @@
 		<li class="navlink"><a  on:click={() => isNavOpen=false} href="/#blog">recent blogs</a></li>
 		<li class="navlink"><a  on:click={() => isNavOpen=false} href="/#contact">contact</a></li>
 		<li class="navlink"><a  on:click={() => isNavOpen=false} href="/#about">about</a></li>
-		<li class="navlink"><a  on:click={() => isNavOpen=false} href="https://poly.mrsauravsahu.tech">polywork</a></li>
 	</ul>
 </nav>
 
 <style>
+	.brand span { font-size: 2rem; font-weight: bold;}
 	nav {
 		position: fixed;
 		width: calc(100% - 1rem);
@@ -35,7 +37,7 @@
 		background-color: var(--accent);
 		padding: 0;
 		margin: 0.5rem;
-		border-radius: 1rem;
+		/* border-radius: 1rem; */
 		height: 4rem;
 		transition: 0.2s ease-in-out height;
 		z-index: 100;

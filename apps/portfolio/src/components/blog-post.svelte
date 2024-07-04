@@ -19,13 +19,13 @@
 
 	.blog-post {
 		background-color: rgb(237, 237, 237);
-		border-radius: 1.5rem;
+		/* border-radius: 1.5rem; */
 		display: flex;
 		flex-direction: column;
 		padding: 1rem;
 		box-shadow: rgb(191, 191, 191) 0.25rem 0.25rem 0.25rem;
 		transition: 0.2s ease-in-out transform;
-		transform: rotate(var(--rotation));
+		/* transform: rotate(var(--rotation)); */
 		cursor: pointer;
 	}
 
@@ -35,7 +35,7 @@
 
 	img {
 		margin-bottom: 0.25rem;
-		border-radius: 1rem;
+		/* border-radius: 1rem; */
 		filter: grayscale();
 	}
 
@@ -78,6 +78,9 @@
 		}
 		.blog-post {
 			padding: 0.75rem;
+		}
+		a {
+			width: unset;
 		}
 	}
 </style>

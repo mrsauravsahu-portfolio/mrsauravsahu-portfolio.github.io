@@ -9,6 +9,7 @@
 	});
 </script>
 
+
 <Nav />
 <main>
 	<slot />
@@ -55,7 +56,7 @@
 		padding: 2rem;
 		background-color: black;
 		color: #aaa;
-		border-radius: 0.5rem;
+		/* border-radius: 0.5rem; */
 		cursor: pointer;
 		transition: 0.2s ease-in-out transform;
 	}

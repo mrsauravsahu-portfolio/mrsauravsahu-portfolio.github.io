@@ -1,26 +1,5 @@
-<script lang="ts" context="module">
-	export async function load({ fetch }) {
-		const response = await fetch('/blog.json');
-		const data: { blogs: any[] } = await response.json();
-		// Get latest 3 blogs
-		let currentPageBlogs = data.blogs.slice(0, 3);
-
-		// Get service health
-		const healthResponse = await fetch('/svc-health.json');
-		const health = await healthResponse.json();
-		return {
-			props: {
-				recentBlogs: currentPageBlogs,
-				health: health
-			}
-		};
-	}
-</script>
-
 <script lang="ts">
 	import BlogPost from '../components/blog-post.svelte';
-	export let recentBlogs: any[];
-	export let health: any[];
 	import Icon from 'svelte-awesome/components/Icon.svelte';
 	import {
 		faYoutube,
@@ -31,6 +10,8 @@
 		faUnsplash
 	} from '@fortawesome/free-brands-svg-icons';
 	import { faEnvelopeOpen } from '@fortawesome/free-regular-svg-icons';
+	import type { PageData } from './$types';
+	export let data: PageData;
 </script>
 
 <svelte:head>
@@ -56,11 +37,13 @@
 		and <a href="https://dev.to/mrsauravsahu">dev.to</a>.
 	</p>
 	<div class="blog-posts">
-		{#each recentBlogs as blog}
-			<BlogPost {blog} />
+		{#each data.blogs.slice(0, 3) as blog}
+			{#key blog.id}
+				<BlogPost {blog} />
+			{/key}
 		{/each}
 	</div>
-	<a role="button" href="/blog/1">read more ⟶</a>
+	<a role="button" href="/blog/1">read more</a>
 </section>
 
 <section class="contact" id="contact">
@@ -106,7 +89,7 @@
 				<Icon data={faUnsplash} scale={4} />
 			</div>
 		</a>
-	</div>
+	</div> 
 </section>
 
 <section id="about" class="about page-section">
@@ -115,12 +98,9 @@
 		Things that make this portfolio work. This portfolio uses a couple of services to get all the
 		data required to create this site, and is built within Github Actions as a static site.
 	</p>
-	{#each health as svcHealth}
-		<!-- add poweredBy property to health -->
-		<!-- get versions for portfolio dynamically -->
-		<h2>portfolio • v0.0.1 • SvelteKit</h2>
-		<h2>{svcHealth.data.name} • {svcHealth.data.version} • .NET 5</h2>
-	{/each}
+
+	<h2>portfolio • v0.0.1 • SvelteKit</h2>
+	<h2>blogs • v0.0.1 • .NET 5</h2>
 </section>
 
 <style>
@@ -178,12 +158,12 @@
 	}
 
 	.contact a {
-		transition: 0.2s ease-in-out transform;
+		transition: 0.2s cubic-bezier(0.39, 0.575, 0.565, 1) transform;
 	}
 
 	.contact > p {
 		padding: 0;
-		margin: .5rem 0;
+		margin: 0.5rem 0;
 	}
 
 	.contact a:hover {

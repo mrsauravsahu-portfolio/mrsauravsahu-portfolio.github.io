@@ -100,7 +100,7 @@
 		box-shadow: rgb(191, 191, 191) 0.25rem 0.25rem 0.25rem;
 		height: 12rem;
 		padding: 1rem;
-		border-radius: 2rem;
+		/* border-radius: 2rem; */
 	}
 
 	ul {

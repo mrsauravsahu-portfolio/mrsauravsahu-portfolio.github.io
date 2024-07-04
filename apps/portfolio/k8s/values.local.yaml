@@ -24,11 +24,11 @@ pod:
         pathPrefix: apps/portfolio
     - name: data
       hostPath:
-        pathPrefix: svc/store
+        pathPrefix: svc/store/data
   volumeMounts:
     - mountPath: /app
       name: code
-    - mountPath: /app/static
+    - mountPath: /app/static/store
       name: data
   env:
     - name: HOST

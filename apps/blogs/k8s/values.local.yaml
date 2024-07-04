@@ -28,7 +28,6 @@ serviceAccount:
 environment: LOCAL_DEVELOPMENT
 
 pod:
-  # command: ["bash", "-c", "'dotnet run --no-launch-profile'"]
   command: ["bash", "-c", "'dotnet watch run --project /app/mrsauravsahu.api --no-launch-profile | tee /var/log/app.log'"]
   workingDir: "/app/mrsauravsahu.api"
   annotations: {}

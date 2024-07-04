@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using Sieve.Attributes;
@@ -7,14 +8,9 @@ namespace mrsauravsahu.data.models
 {
     public class Blog
     {
-        public Blog()
-        {
-            Images = new List<string>();
-        }
-
         public int Id { get; set; }
         public string? Title { get; set; }
-        public string Description { get; set; }
+        public string? Description { get; set; }
         public string? Slug { get; set; }
 
         [Sieve(CanSort = true)]
@@ -24,7 +20,7 @@ namespace mrsauravsahu.data.models
         public string? ApproxTimeToRead { get; set; }
         private string? images;
 
-        public string CoverImageUrl { get; set; } = "";
+        public string? CoverImageUrl => Images.FirstOrDefault();
 
         [NotMapped]
         public IEnumerable<string> Images

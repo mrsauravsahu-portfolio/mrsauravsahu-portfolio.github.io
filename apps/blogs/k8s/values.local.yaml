@@ -29,7 +29,7 @@ environment: LOCAL_DEVELOPMENT
 
 pod:
   # command: ["bash", "-c", "'dotnet run --no-launch-profile'"]
-  command: ["bash", "-c", "'dotnet run --project /app/mrsauravsahu.api --no-launch-profile | tee /var/log/app.log'"]
+  command: ["bash", "-c", "'dotnet watch run --project /app/mrsauravsahu.api --no-launch-profile | tee /var/log/app.log'"]
   workingDir: "/app/mrsauravsahu.api"
   annotations: {}
   volumes:
@@ -38,7 +38,7 @@ pod:
         pathPrefix: apps/blogs/src
     - name: data
       hostPath:
-        pathPrefix: svc/store
+        pathPrefix: apps/data-store
   volumeMounts:
     - mountPath: /app
       name: code
@@ -49,6 +49,8 @@ pod:
       value: DEVELOPMENT
     - name: ASPNETCORE_URLS
       value: "http://0.0.0.0:80"
+    - name: CORS_URLS
+      value: "http://localhost:5173/"
     - name: Blogs__Version
       value: "0.1.0"
     - name: Blogs__ContactEmail

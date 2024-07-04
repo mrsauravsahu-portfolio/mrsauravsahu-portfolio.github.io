@@ -87,6 +87,8 @@ namespace mrsauravsahu.api
 
             services.AddScoped<SieveProcessor>();
 
+            services.AddCors();
+
             services
                 .AddGraphQLServer()
                 .AddQueryType<Query>()
@@ -106,6 +108,11 @@ namespace mrsauravsahu.api
             app.UseRouting();
 
             app.UseAuthorization();
+
+            var originURLs = (Environment.GetEnvironmentVariable("CORS_URLS") ?? "").Split(",");
+            app.UseCors(options => {
+                options.WithOrigins(originURLs).AllowAnyMethod();
+            });
 
             app.UseEndpoints(endpoints =>
             {

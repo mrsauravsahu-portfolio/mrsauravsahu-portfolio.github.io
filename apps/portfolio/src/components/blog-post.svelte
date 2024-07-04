@@ -78,9 +78,10 @@
 		}
 		.blog-post {
 			padding: 0.75rem;
+			width: calc(100% - 2 * .75rem);
 		}
 		a {
-			width: unset;
+			width: 100%;
 		}
 	}
 </style>

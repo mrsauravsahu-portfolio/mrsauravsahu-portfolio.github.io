@@ -32,7 +32,7 @@
 <section class="blog" id="blog">
 	<h1>recent blogs</h1>
 	<p>
-		Well, I occassionally write things. You can also find these on your favorite blogging platforms,
+		Here are some of my blogs. You can also read these on your favorite blogging platforms,
 		like <a href="https://mrsauravsahu.medium.com">medium</a>
 		and <a href="https://dev.to/mrsauravsahu">dev.to</a>.
 	</p>
@@ -49,9 +49,8 @@
 <section class="contact" id="contact">
 	<h1>contact</h1>
 	<p>
-		Here's how you can get in touch with me - links to all social media. I still don't understand
-		Snapchat 😂 Most active on Github and Instagram; but you can send a quick email, or a pull
-		request, or a direct message or a tweet... 😝
+		Here's how you can get in touch with me. Most active on LinkedIn and
+		Instagram.
 	</p>
 	<div class="contact-tiles">
 		<a href="mailto:mrsauravsahu@outlook.com">
@@ -89,7 +88,7 @@
 				<Icon data={faUnsplash} scale={4} />
 			</div>
 		</a>
-	</div> 
+	</div>
 </section>
 
 <section id="about" class="about page-section">
@@ -101,6 +100,7 @@
 
 	<h2>portfolio • v0.0.1 • SvelteKit</h2>
 	<h2>blogs • v0.0.1 • .NET 5</h2>
+	<h2>data-store • 0.1.0-alpha.0 • node.js</h2>
 </section>
 
 <style>

@@ -1,6 +1,6 @@
 <script>
 	import Icon from 'svelte-awesome/components/Icon.svelte';
-	import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
+	import { faEllipsisV, faHome } from '@fortawesome/free-solid-svg-icons';
 	// import brandImg from '/img/brand.svg';
 
 	let isNavOpen = false;
@@ -8,9 +8,8 @@
 
 <nav class:nav__open={isNavOpen}>
 	<div class="navmain">
-		<a href="/#home" class="brand" on:click={() => isNavOpen=false}>
-			<!-- <img src={brandImg} alt="brand" /> -->
-			 <span>S</span>
+		<a href="/#home" class="brand" on:click={() => (isNavOpen = false)}>
+			<Icon data={faHome} scale={2} style="color: white" />
 		</a>
 		<button
 			on:click={() => {
@@ -21,14 +20,17 @@
 		</button>
 	</div>
 	<ul class="navlinks" class:navlinks__closed={!isNavOpen}>
-		<li class="navlink"><a  on:click={() => isNavOpen=false} href="/#blog">recent blogs</a></li>
-		<li class="navlink"><a  on:click={() => isNavOpen=false} href="/#contact">contact</a></li>
-		<li class="navlink"><a  on:click={() => isNavOpen=false} href="/#about">about</a></li>
+		<li class="navlink"><a on:click={() => (isNavOpen = false)} href="/#blog">recent blogs</a></li>
+		<li class="navlink"><a on:click={() => (isNavOpen = false)} href="/#contact">contact</a></li>
+		<li class="navlink"><a on:click={() => (isNavOpen = false)} href="/#about">about</a></li>
 	</ul>
 </nav>
 
 <style>
-	.brand span { font-size: 2rem; font-weight: bold;}
+	.brand span {
+		font-size: 2rem;
+		font-weight: bold;
+	}
 	nav {
 		position: fixed;
 		width: calc(100% - 1rem);

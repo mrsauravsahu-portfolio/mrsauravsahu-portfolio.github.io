@@ -18,12 +18,11 @@
 	}
 
 	.blog-post {
-		background-color: rgb(237, 237, 237);
+		background-color: #bbb;
 		/* border-radius: 1.5rem; */
 		display: flex;
 		flex-direction: column;
 		padding: 1rem;
-		box-shadow: rgb(191, 191, 191) 0.25rem 0.25rem 0.25rem;
 		transition: 0.2s ease-in-out transform;
 		/* transform: rotate(var(--rotation)); */
 		cursor: pointer;

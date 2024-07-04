@@ -96,7 +96,6 @@
 	}
 
 	.post {
-		background-color: rgb(237, 237, 237);
 		box-shadow: rgb(191, 191, 191) 0.25rem 0.25rem 0.25rem;
 		height: 12rem;
 		padding: 1rem;

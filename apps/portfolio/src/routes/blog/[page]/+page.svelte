@@ -1,28 +1,12 @@
-<script lang="ts" context="module">
-	export async function load({ page, fetch }) {
-		let pageNumber = Number(page.params.page);
-		pageNumber = Number.isNaN(pageNumber) ? 1 : pageNumber;
-
-		const response = await fetch('/blog.json');
-		const data = await response.json();
-
-		const lastPage = Math.floor(data.totalCount / 6) + (data.totalCount % 6 === 0 ? 0 : 1);
-		let startIndex = 6 * (pageNumber - 1);
-		let currentPageBlogs = data.blogs.slice(startIndex, startIndex + 6);
-
-		return { props: { ...data, currentPage: pageNumber, lastPage, blogs: currentPageBlogs } };
-	}
-</script>
-
 <script lang="ts">
 	import { DateTime, Duration } from 'luxon';
-	import { PfHeader, PfCard, PfButton } from '@propfull/kit';
+	import type { PageData } from './$types';
+	import Icon from 'svelte-awesome/components/Icon.svelte';
+	import { faBackward } from '@fortawesome/free-solid-svg-icons';
+	import { faForward } from '@fortawesome/free-solid-svg-icons';
 
-	export let blogs;
-	export let count;
-	export let totalCount;
-	export let currentPage;
-	export let lastPage;
+	export let data: PageData;
+	let { blogs, lastPage, currentPage } = data;
 </script>
 
 <svelte:head>
@@ -35,46 +19,55 @@
 		Here are few of the things that I learned in my 10-ish years of programming/learning journey.
 		Hope it's helpful to you as well. These blogs are usually dictated by what I'm upto...
 	</p>
-	<ul class="posts-container">
-		{#each blogs as blog}
-			<!-- we're using the non-standard `rel=prefetch` attribute to
+	{#key currentPage}
+		<p>{currentPage}</p>
+		<ul class="posts-container">
+			{#each blogs as blog}
+				{#key blog.id}
+					<!-- we're using the non-standard `rel=prefetch` attribute to
 				tell Sapper to load the data for the page as soon as
 				the user hovers over the link or taps it, instead of
 				waiting for the 'click' event -->
-			<li>
-				<a rel="prefetch" href="posts/{blog.id}">
-					<div class="post">
-						<div class="title">
-							<h3>{blog.title}</h3>
-						</div>
-						<div class="content">
-							<hr />
-							<div class="blog-meta">
-								<h4>{DateTime.fromISO(blog.createdAt).toRelative()}</h4>
-								•
-								<h4>
-									{#if Duration.fromISO(blog.approxTimeToRead).minutes <= 1}
-										less than a minute
-									{:else}
-										{`${Duration.fromISO(blog.approxTimeToRead).minutes} minutes`}
-									{/if}
-								</h4>
-								<h4>read</h4>
+					<li>
+						<a rel="prefetch" href="posts/{blog.id}">
+							<div class="post">
+								<div class="title">
+									<h3>{blog.title}</h3>
+								</div>
+								<div class="content">
+									<hr />
+									<div class="blog-meta">
+										<h4>{DateTime.fromISO(blog.createdAt).toRelative()}</h4>
+										•
+										<h4>
+											{#if Duration.fromISO(blog.approxTimeToRead).minutes <= 1}
+												less than a minute
+											{:else}
+												{`${Duration.fromISO(blog.approxTimeToRead).minutes} minutes`}
+											{/if}
+										</h4>
+										<h4>read</h4>
+									</div>
+									{#if blog.description}{blog.description}{/if}
+								</div>
 							</div>
-							{#if blog.description}{blog.description}{/if}
-						</div>
-					</div>
-				</a>
-			</li>
-		{/each}
-	</ul>
+						</a>
+					</li>
+				{/key}
+			{/each}
+		</ul>
+	{/key}
 	<div class="page-container">
 		{#if currentPage !== 1}
-			<a href={`/blog/${currentPage - 1}`} disabled={currentPage === 1}> ⟵ </a>
+			<a href={`/blog/${currentPage - 1}`}>
+				<Icon data={faBackward} scale={1} style="color: black" />
+			</a>
 		{/if}
 		&nbsp; {currentPage} of {lastPage} &nbsp;
 		{#if currentPage !== lastPage}
-			<a href={`/blog/${currentPage + 1}`} disabled={currentPage === lastPage}> ⟶ </a>
+			<a href={`/blog/${currentPage + 1}`}>
+				<Icon data={faForward} scale={1} style="color: black" />
+			</a>
 		{/if}
 	</div>
 </section>
@@ -95,11 +88,15 @@
 		margin-bottom: 4rem;
 	}
 
+	.page-container > a {
+		display: flex;
+	}
+
 	.post {
-		box-shadow: rgb(191, 191, 191) 0.25rem 0.25rem 0.25rem;
+		/* box-shadow: rgb(191, 191, 191) 0.25rem 0.25rem 0.25rem; */
 		height: 12rem;
 		padding: 1rem;
-		/* border-radius: 2rem; */
+		background-color: #bbb;
 	}
 
 	ul {
@@ -117,9 +114,8 @@
 		min-height: 12rem;
 	}
 
-	.title,
-	.content {
-		padding: 0 1rem;
+	.title {
+		margin-bottom: 1rem;
 	}
 
 	:global(.blogs .title h1) {
@@ -140,9 +136,13 @@
 		border: none;
 		stroke-width: 0;
 	}
-	
+
 	a {
 		text-decoration: none;
+	}
+
+	h3 {
+		margin: 0;
 	}
 
 	@media (min-width: 48rem) {

@@ -10,7 +10,6 @@ export const load = async () => {
 
   let blogs: any[] = []
 
-  console.log("____________________STARTING_____________________")
   do {
     // eslint-disable-next-line no-await-in-loop
     const allBlogsResponse = await urqlClient.query(`
@@ -43,8 +42,6 @@ export const load = async () => {
       endCursor: allBlogsResponse?.data?.blogs?.pageInfo?.endCursor || undefined,
     }
   } while (state.hasNextPage)
-
-    console.log("____________________END_____________________")
 
   return {
     blogs,

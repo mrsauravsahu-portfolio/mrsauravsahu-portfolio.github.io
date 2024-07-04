@@ -1,7 +1,6 @@
 <script>
 	import Icon from 'svelte-awesome/components/Icon.svelte';
 	import { faEllipsisV, faHome } from '@fortawesome/free-solid-svg-icons';
-	// import brandImg from '/img/brand.svg';
 
 	let isNavOpen = false;
 </script>

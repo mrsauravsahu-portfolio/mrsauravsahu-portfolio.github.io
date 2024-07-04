@@ -107,7 +107,7 @@
 	.home {
 		display: flex;
 		padding: 0 0.5rem;
-		background: url('/img/mrss-silhouette.svg');
+		background-image: url('/img/mrss-silhouette.svg');
 		background-repeat: no-repeat;
 		background-position: right bottom;
 		background-size: 20%;

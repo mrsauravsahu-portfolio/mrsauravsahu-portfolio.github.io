@@ -14,8 +14,8 @@ services:
       args:
         NODE_VERSION: ${NODE_VERSION}
     volumes:
-      - '${PWD}/svc/portfolio:/app'
-      - '${PWD}/svc/store/data:/app/static/store'
+      - '${PWD}/apps/portfolio:/app'
+      - '${PWD}/apps/store/data:/app/static/store'
       - '/app/node_modules'
     environment:
       PORT: 80

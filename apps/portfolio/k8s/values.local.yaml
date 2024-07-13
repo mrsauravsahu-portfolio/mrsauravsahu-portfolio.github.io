@@ -24,7 +24,7 @@ pod:
         pathPrefix: apps/portfolio
     - name: data
       hostPath:
-        pathPrefix: svc/store/data
+        pathPrefix: apps/store/data
   volumeMounts:
     - mountPath: /app
       name: code

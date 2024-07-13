@@ -15,8 +15,8 @@ services:
       #   NODE_VERSION: ${NODE_VERSION}
     volumes:
       - '${PWD}/apps/blogs:/app'
-      - '${PWD}/svc/store:/store'
-      # - '${PWD}/svc/store/data:/app/static/store'
+      - '${PWD}/apps/store:/store'
+      # - '${PWD}/apps/store/data:/app/static/store'
       # - '/app/node_modules'
     environment:
       PORT: 80

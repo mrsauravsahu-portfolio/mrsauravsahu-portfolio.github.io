@@ -30,26 +30,26 @@ You'll need to install it and also enable the built-in registry to run the app, 
 to deploy the app, create the services
 
 ```bash
-plz build //svc/...
-plz run parallel //svc/api //svc/docs
+plz build //apps/...
+plz run parallel //apps/api //apps/docs
 ```
 
 ### [extra step for linux] push images to docker registry
 Because the images need to be on the microk8s docker registry for this to work, we need to push the images manually. (need to try and automate this later)
 ```
-plz run parallel //svc/api:api_push //svc/docs:documentation_push
+plz run parallel //apps/api:api_push //apps/docs:documentation_push
 ```
 
 ### deploy to kubernetes
 ```
 kubectl apply -f ./.cicd # --> creates the kubernetes namespace
 
-plz run parallel //svc/api/k8s:k8s_push //svc/docs/k8s:k8s_push
+plz run parallel //apps/api/k8s:k8s_push //apps/docs/k8s:k8s_push
 ```
 
 ### cleanup
 ```
-plz run parallel //svc/api/k8s:k8s_cleanup //svc/docs/k8s:k8s_cleanup
+plz run parallel //apps/api/k8s:k8s_cleanup //apps/docs/k8s:k8s_cleanup
 
 kubectl delete -f .cicd
 ```
@@ -69,5 +69,5 @@ with microk8s on Linux, the services will directly be available on the NodePort 
 
 You can get the port with 
 ```
-kubectl -n mrsauravsahu describe svc/docs-svc | grep NodePort
+kubectl -n mrsauravsahu describe apps/docs-svc | grep NodePort
 ```

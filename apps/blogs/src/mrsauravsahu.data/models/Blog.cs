@@ -20,6 +20,7 @@ namespace mrsauravsahu.data.models
         public string? ApproxTimeToRead { get; set; }
         private string? images;
 
+        [NotMapped]
         public string? CoverImageUrl => Images.FirstOrDefault();
 
         [NotMapped]

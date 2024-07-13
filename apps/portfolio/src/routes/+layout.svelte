@@ -20,6 +20,7 @@
 
 	:global(html) {
 		margin: 0;
+		font-size: .8em;
 		background-color: var(--bg);
 	}
 
@@ -29,7 +30,7 @@
 	}
 
 	:global(*) {
-		font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
 			Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 	}
 

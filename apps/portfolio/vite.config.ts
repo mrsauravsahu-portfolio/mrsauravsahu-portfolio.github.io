@@ -6,7 +6,8 @@ export default defineConfig({
 	server: {
 		proxy: {
 			// https://stackoverflow.com/questions/64677212/how-to-configure-proxy-in-vite
-			'/graphql': `http://localhost:30001/graphql`
+			'/api': 'http://localhost:30001',
+			'/graphql': 'http://localhost:30001/graphql',
 		}
 	}
 });

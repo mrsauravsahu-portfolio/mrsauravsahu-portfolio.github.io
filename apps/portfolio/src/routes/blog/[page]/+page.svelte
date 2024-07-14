@@ -5,8 +5,9 @@
 	import { faBackward } from '@fortawesome/free-solid-svg-icons';
 	import { faForward } from '@fortawesome/free-solid-svg-icons';
 
+	import { page } from '$app/stores';
 	export let data: PageData;
-	let { blogs, lastPage, currentPage } = data;
+	$: ({ blogs, lastPage } = data)
 </script>
 
 <svelte:head>
@@ -19,11 +20,8 @@
 		Here are few of the things that I learned in my 10-ish years of programming/learning journey.
 		Hope it's helpful to you as well. These blogs are usually dictated by what I'm upto...
 	</p>
-	{#key currentPage}
-		<p>{currentPage}</p>
 		<ul class="posts-container">
 			{#each blogs as blog}
-				{#key blog.id}
 					<!-- we're using the non-standard `rel=prefetch` attribute to
 				tell Sapper to load the data for the page as soon as
 				the user hovers over the link or taps it, instead of
@@ -53,19 +51,17 @@
 							</div>
 						</a>
 					</li>
-				{/key}
 			{/each}
 		</ul>
-	{/key}
 	<div class="page-container">
-		{#if currentPage !== 1}
-			<a href={`/blog/${currentPage - 1}`}>
+		{#if $page.data.pageNumber !== 1}
+			<a href={`${$page.data.pageNumber - 1}`}>
 				<Icon data={faBackward} scale={1} style="color: black" />
 			</a>
 		{/if}
-		&nbsp; {currentPage} of {lastPage} &nbsp;
-		{#if currentPage !== lastPage}
-			<a href={`/blog/${currentPage + 1}`}>
+		&nbsp; {$page.data.pageNumber} of {lastPage} &nbsp;
+		{#if $page.data.pageNumber !== lastPage}
+			<a href={`${$page.data.pageNumber + 1}`}>
 				<Icon data={faForward} scale={1} style="color: black" />
 			</a>
 		{/if}

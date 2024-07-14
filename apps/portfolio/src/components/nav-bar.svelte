@@ -19,7 +19,7 @@
 		</button>
 	</div>
 	<ul class="navlinks" class:navlinks__closed={!isNavOpen}>
-		<li class="navlink"><a on:click={() => (isNavOpen = false)} href="/#blog">recent blogs</a></li>
+		<li class="navlink"><a on:click={() => (isNavOpen = false)} href="/blog">blogs</a></li>
 		<li class="navlink"><a on:click={() => (isNavOpen = false)} href="/#contact">contact</a></li>
 		<li class="navlink"><a on:click={() => (isNavOpen = false)} href="/#about">about</a></li>
 	</ul>
@@ -32,12 +32,11 @@
 	}
 	nav {
 		position: fixed;
-		width: calc(100% - 1rem);
+		width: 100%;
 		display: flex;
 		align-items: center;
 		background-color: var(--accent);
 		padding: 0;
-		margin: 0.5rem;
 		/* border-radius: 1rem; */
 		height: 4rem;
 		transition: 0.2s ease-in-out height;
@@ -84,7 +83,6 @@
 	@media (max-width: 40rem) {
 		nav {
 			flex-direction: column;
-			width: calc(100% - 1rem);
 		}
 		/* show the ellipsis button */
 		button {

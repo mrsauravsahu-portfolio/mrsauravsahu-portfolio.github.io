@@ -1,6 +1,5 @@
-import { redirect } from '@sveltejs/kit';
+import { redirect, type Load } from '@sveltejs/kit';
 
-/** @type {import('./$types').PageLoad} */
-export function load() {
+export const load: Load = ()  => {
   redirect(301, 'blog/1')
 }

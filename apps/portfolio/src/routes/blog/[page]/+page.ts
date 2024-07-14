@@ -1,7 +1,11 @@
+import { redirect } from '@sveltejs/kit';
 import { urqlClient } from '../../../setup/urql'
 import type { Blog } from '../../../types/Blog';
 
 export const load = async ({ params }) => {
+	if (Number.isNaN(params.page))
+		redirect(301, '1')
+
 	let pageNumber = Number(params.page);
 	pageNumber = Number.isNaN(pageNumber) ? 1 : pageNumber;
 

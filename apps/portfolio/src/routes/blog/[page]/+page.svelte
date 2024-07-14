@@ -6,8 +6,9 @@
 	import { faForward } from '@fortawesome/free-solid-svg-icons';
 
 	import { page } from '$app/stores';
+	import { onMount } from 'svelte';
 	export let data: PageData;
-	$: ({ blogs, lastPage } = data)
+	$: ({ blogs, currentPage, lastPage } = data);
 </script>
 
 <svelte:head>
@@ -20,48 +21,48 @@
 		Here are few of the things that I learned in my 10-ish years of programming/learning journey.
 		Hope it's helpful to you as well. These blogs are usually dictated by what I'm upto...
 	</p>
-		<ul class="posts-container">
-			{#each blogs as blog}
-					<!-- we're using the non-standard `rel=prefetch` attribute to
+	<ul class="posts-container">
+		{#each blogs as blog}
+			<!-- we're using the non-standard `rel=prefetch` attribute to
 				tell Sapper to load the data for the page as soon as
 				the user hovers over the link or taps it, instead of
 				waiting for the 'click' event -->
-					<li>
-						<a rel="prefetch" href="posts/{blog.id}">
-							<div class="post">
-								<div class="title">
-									<h3>{blog.title}</h3>
-								</div>
-								<div class="content">
-									<hr />
-									<div class="blog-meta">
-										<h4>{DateTime.fromISO(blog.createdAt).toRelative()}</h4>
-										•
-										<h4>
-											{#if Duration.fromISO(blog.approxTimeToRead).minutes <= 1}
-												less than a minute
-											{:else}
-												{`${Duration.fromISO(blog.approxTimeToRead).minutes} minutes`}
-											{/if}
-										</h4>
-										<h4>read</h4>
-									</div>
-									{#if blog.description}{blog.description}{/if}
-								</div>
+			<li>
+				<a rel="prefetch" href="posts/{blog.id}">
+					<div class="post">
+						<div class="title">
+							<h3>{blog.title}</h3>
+						</div>
+						<div class="content">
+							<hr />
+							<div class="blog-meta">
+								<h4>{DateTime.fromISO(blog.createdAt).toRelative()}</h4>
+								•
+								<h4>
+									{#if Duration.fromISO(blog.approxTimeToRead).minutes <= 1}
+										less than a minute
+									{:else}
+										{`${Duration.fromISO(blog.approxTimeToRead).minutes} minutes`}
+									{/if}
+								</h4>
+								<h4>read</h4>
 							</div>
-						</a>
-					</li>
-			{/each}
-		</ul>
+							{#if blog.description}{blog.description}{/if}
+						</div>
+					</div>
+				</a>
+			</li>
+		{/each}
+	</ul>
 	<div class="page-container">
-		{#if $page.data.pageNumber !== 1}
-			<a href={`${$page.data.pageNumber - 1}`}>
+		{#if currentPage !== 1}
+			<a href={`${currentPage - 1}`}>
 				<Icon data={faBackward} scale={1} style="color: black" />
 			</a>
 		{/if}
-		&nbsp; {$page.data.pageNumber} of {lastPage} &nbsp;
-		{#if $page.data.pageNumber !== lastPage}
-			<a href={`${$page.data.pageNumber + 1}`}>
+		&nbsp; {currentPage} of {lastPage} &nbsp;
+		{#if currentPage !== lastPage}
+			<a href={`${currentPage + 1}`}>
 				<Icon data={faForward} scale={1} style="color: black" />
 			</a>
 		{/if}

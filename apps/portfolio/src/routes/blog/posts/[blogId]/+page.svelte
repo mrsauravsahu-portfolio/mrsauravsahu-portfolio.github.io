@@ -3,7 +3,7 @@
 	import { onMount } from 'svelte';
 	import Utterance from '../../../../components/utterance.svelte';
 	import type { PageData } from './$types';
-	 import SvelteMarkdown from 'svelte-markdown'
+	import SvelteMarkdown from 'svelte-markdown';
 
 	export let data: PageData;
 	$: ({ blog, blogContent } = data);
@@ -20,29 +20,29 @@
 
 <section class="blog-post">
 	<!-- {#if blog} -->
-		<h1>{blog.title}</h1>
-		<h4>
-			<span class="prefix"> Published on </span>
-			{DateTime.fromISO(blog.createdAt).toFormat('EEEE, MMMM dd yyyy')}
-			•
-			<!-- {durationText} -->
-			<span class="prefix">read</span>
-		</h4>
-		<!-- <a href={blogUrl}>
+	<h1>{blog.title}</h1>
+	<h4>
+		<span class="prefix"> Published on </span>
+		{DateTime.fromISO(blog.createdAt).toFormat('EEEE, MMMM dd yyyy')}
+		•
+		<!-- {durationText} -->
+		<span class="prefix">read</span>
+	</h4>
+	<!-- <a href={blogUrl}>
 		<h2 type="h4">🔽 download raw</h2>
 	</a> -->
-		<!-- TODO: fix crawling without this extra anchor tag -->
-		<!-- <a href={blogUrl} /> -->
-		<!-- {#if blogUrl !== ''} -->
-		 <!-- <p style='display: none;'>{blogContent}</p> -->
-			<!-- <wc-markdown highlight>
+	<!-- TODO: fix crawling without this extra anchor tag -->
+	<!-- <a href={blogUrl} /> -->
+	<!-- {#if blogUrl !== ''} -->
+	<!-- <p style='display: none;'>{blogContent}</p> -->
+	<!-- <wc-markdown highlight>
 				{blogRender}
 			</wc-markdown> -->
-			<SvelteMarkdown source={blogContent} />
+	<SvelteMarkdown source={blogContent} />
 
-		<!-- {/if} -->
-		<!-- TODO: Theme switching without reloads -->
-		<Utterance />
+	<!-- {/if} -->
+	<!-- TODO: Theme switching without reloads -->
+	<Utterance />
 	<!-- {/if} -->
 </section>
 
@@ -65,6 +65,26 @@
 
 	h4 {
 		font-family: unset;
+	}
+
+	/* Style for the table */
+	:global(.blog-post table) {
+		width: 100%;
+		border-collapse: collapse; /* Ensures there is a single border between cells */
+		margin: 20px 0;
+		font-size: 1em;
+		font-family: Arial, sans-serif;
+	}
+
+	/* Style for the table header */
+	:global(.blog-post th, .blog-post td) {
+		border: 1px solid #444444; /* Single stroke border */
+		text-align: left;
+		padding: 8px;
+	}
+
+	:global(.blog-post thead th) {
+		background-color: #8a8a8a; /* Single stroke border */
 	}
 
 	/*

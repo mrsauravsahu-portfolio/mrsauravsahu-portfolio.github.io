@@ -32,8 +32,9 @@
 <section class="blog" id="blog">
 	<h1>recent blogs</h1>
 	<p>
-		Here are some of my blogs. You can also read these on your favorite blogging platforms,
-		like <a href="https://mrsauravsahu.medium.com">medium</a>
+		Here are some of my blogs. You can also read these on your favorite blogging platforms, like <a
+			href="https://mrsauravsahu.medium.com">medium</a
+		>
 		and <a href="https://dev.to/mrsauravsahu">dev.to</a>.
 	</p>
 	<div class="blog-posts">
@@ -48,10 +49,7 @@
 
 <section class="contact" id="contact">
 	<h1>contact</h1>
-	<p>
-		Here's how you can get in touch with me. Most active on LinkedIn and
-		Instagram.
-	</p>
+	<p>Here's how you can get in touch with me. Most active on LinkedIn and Instagram.</p>
 	<div class="contact-tiles">
 		<a href="mailto:mrsauravsahu@outlook.com">
 			<div>
@@ -92,15 +90,21 @@
 </section>
 
 <section id="about" class="about page-section">
-	<h1>about</h1>
-	<p>
-		Things that make this portfolio work. This portfolio uses a couple of services to get all the
-		data required to create this site, and is built within Github Actions as a static site.
-	</p>
+	<div class="content">
+		<h1>about</h1>
+		<p>
+			Things that make this portfolio work. This portfolio uses a couple of services to get all the
+			data required together, and is built within Github Actions as a static site.
+		</p>
+		<h2>portfolio • SvelteKit</h2>
+		<h2>blogs • dotnet</h2>
+		<h2>data-store • node.js</h2>
+	</div>
 
-	<h2>portfolio • v0.0.1 • SvelteKit</h2>
-	<h2>blogs • v0.0.1 • .NET 5</h2>
-	<h2>data-store • 0.1.0-alpha.0 • node.js</h2>
+	<div class="made-with-love">
+		<p>Made with ❤️</p>
+		<p>- Sahu</p>
+	</div>
 </section>
 
 <style>
@@ -158,6 +162,7 @@
 	}
 
 	.contact a {
+		width: 30vw;
 		transition: 0.2s cubic-bezier(0.39, 0.575, 0.565, 1) transform;
 	}
 
@@ -170,6 +175,18 @@
 		transform: scale(1.25);
 	}
 
+	.about {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+
+	.made-with-love {
+		padding: 1rem;
+		text-align: center;
+	}
+
+	.made-with-love p { margin: .5rem;}
 	.about h2 {
 		font-size: 1rem;
 	}

@@ -68,6 +68,8 @@
 
 	a,
 	a:visited {
+		font-family: var(--font-title);
+		font-size: 1.25rem;
 		color: var(--bg);
 		text-decoration: none;
 		padding: 0 2rem;

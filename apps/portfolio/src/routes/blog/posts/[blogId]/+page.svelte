@@ -1,43 +1,16 @@
 <script lang="ts">
 	import { DateTime, Duration } from 'luxon';
-
+	import { onMount } from 'svelte';
 	import Utterance from '../../../../components/utterance.svelte';
 	import type { PageData } from './$types';
-	import { onMount } from 'svelte';
-	import { urqlClient } from '../../../../setup/urql';
+	 import SvelteMarkdown from 'svelte-markdown'
 
 	export let data: PageData;
-	$: ({ blogId } = data);
+	$: ({ blog, blogContent } = data);
 
-	let blog: any = null;
-	let blogUrl = '';
-	onMount(async () => {
-		blog = (
-			await urqlClient
-				.query(
-					`
-			query ($blogId: Int!) {
-			blogById(input: {
-				id: $blogId
-			}) {
-				id
-				title
-				description
-				createdAt
-				approxTimeToRead
-				coverImageUrl
-			}
-			}`,
-					{ blogId: +blogId }
-				)
-				.toPromise()
-		).data.blogById;
-		blogUrl = `/api/blogs/${blog.id}/file`;
-	});
-
-	const duration = { minutes: 0 };
 	// Duration.fromISO(blog.approxTimeToRead);
-	const durationText = 'less than a minute';
+	// const duration = { minutes: 0 };
+	// const durationText = 'less than a minute';
 	// duration.minutes <= 1 ? 'less than a minute' : `${duration.toFormat('m')} minutes`;
 </script>
 
@@ -46,13 +19,13 @@
 </svelte:head>
 
 <section class="blog-post">
-	{#if blog}
+	<!-- {#if blog} -->
 		<h1>{blog.title}</h1>
 		<h4>
 			<span class="prefix"> Published on </span>
 			{DateTime.fromISO(blog.createdAt).toFormat('EEEE, MMMM dd yyyy')}
 			•
-			{durationText}
+			<!-- {durationText} -->
 			<span class="prefix">read</span>
 		</h4>
 		<!-- <a href={blogUrl}>
@@ -60,12 +33,17 @@
 	</a> -->
 		<!-- TODO: fix crawling without this extra anchor tag -->
 		<!-- <a href={blogUrl} /> -->
-		{#if blogUrl !== ''}
-			<wc-markdown src={blogUrl} highlight />
-		{/if}
+		<!-- {#if blogUrl !== ''} -->
+		 <!-- <p style='display: none;'>{blogContent}</p> -->
+			<!-- <wc-markdown highlight>
+				{blogRender}
+			</wc-markdown> -->
+			<SvelteMarkdown source={blogContent} />
+
+		<!-- {/if} -->
 		<!-- TODO: Theme switching without reloads -->
 		<Utterance />
-	{/if}
+	<!-- {/if} -->
 </section>
 
 <style>
@@ -77,6 +55,16 @@
 		font-weight: 100;
 	}
 
+	.blog-post {
+		line-height: 1.8;
+	}
+
+	h1 {
+		font-size: 2.5rem;
+	}
+
+	/*
+	
 	wc-markdown :global(:not(pre) > code) {
 		background-color: rgb(var(--ss-accent));
 		padding: 0.1rem 0.5rem;
@@ -103,10 +91,6 @@
 		all: unset;
 		cursor: pointer;
 	}
-
-	@media (max-width: 40rem) {
-		h1 {
-			font-size: 2rem;
-		}
-	}
+	
+	*/
 </style>

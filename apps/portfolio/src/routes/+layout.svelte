@@ -17,6 +17,8 @@
 
 <style>
 	@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@200;500;800&display=swap');
+	@import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
+	@import url('https://fonts.googleapis.com/css2?family=Concert+One&family=Courier+Prime&display=swap');
 
 	:global(html) {
 		margin: 0;
@@ -29,14 +31,42 @@
 		height: 100%;
 	}
 
+	:global(h1,h2,h3,h4,h5,h6) {
+		font-family: 'Concert One', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	}
+
 	:global(*) {
 		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
 			Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	}
+	:global(img){
+		width: 100%;
+	}
+
+	:global(img.half){
+		width: 50%;
+	}
+
+	:global(pre,code) {
+		border-radius: .2rem;
+		background-color: #333;
+		font-family:  'Courier Prime', monospace;
+		color: #aaa;
+	}
+
+	:global(pre) {
+	padding: 1rem;
+	}
+
+	:global(code) {
+		padding: .125rem .25rem;
 	}
 
 	:root {
 		--accent: #333;
 		--bg: #aaa;
+
+		--font-title: 'Concert One', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 	}
 
 	main {

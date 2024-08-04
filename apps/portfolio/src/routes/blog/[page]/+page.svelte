@@ -4,15 +4,12 @@
 	import Icon from 'svelte-awesome/components/Icon.svelte';
 	import { faBackward } from '@fortawesome/free-solid-svg-icons';
 	import { faForward } from '@fortawesome/free-solid-svg-icons';
-
-	import { page } from '$app/stores';
-	import { onMount } from 'svelte';
 	export let data: PageData;
 	$: ({ blogs, currentPage, lastPage } = data);
 </script>
 
 <svelte:head>
-	<title>@mrsauravsahu/blog</title>
+	<title>Blog</title>
 </svelte:head>
 
 <section class="container blogs">
@@ -28,13 +25,13 @@
 				the user hovers over the link or taps it, instead of
 				waiting for the 'click' event -->
 			<li>
-				<a rel="prefetch" href="posts/{blog.id}">
+				<a href={`posts/${blog.id}`}>
 					<div class="post">
 						<div class="title">
-							<h3>{blog.title}</h3>
+							<h2>{blog.title}</h2>
 						</div>
+						<hr />
 						<div class="content">
-							<hr />
 							<div class="blog-meta">
 								<h4>{DateTime.fromISO(blog.createdAt).toRelative()}</h4>
 								•
@@ -82,7 +79,12 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		margin-bottom: 4rem;
+		padding-bottom: 4rem;
+	}
+
+	.content {
+		padding: 1rem;
+		padding-top: 0;
 	}
 
 	.page-container > a {
@@ -91,9 +93,10 @@
 
 	.post {
 		/* box-shadow: rgb(191, 191, 191) 0.25rem 0.25rem 0.25rem; */
-		height: 12rem;
-		padding: 1rem;
+		height: 16rem;
+		/* padding: 1rem; */
 		background-color: #bbb;
+		border-radius: 0.25rem;
 	}
 
 	ul {
@@ -111,8 +114,9 @@
 		min-height: 12rem;
 	}
 
-	.title {
-		margin-bottom: 1rem;
+	.title > h2 {
+		padding: 2rem 1rem 1rem 1rem;
+		margin: 0;
 	}
 
 	:global(.blogs .title h1) {
@@ -129,17 +133,14 @@
 
 	hr {
 		background-color: rgb(45, 45, 45);
-		height: 0.0625rem;
+		width: 75%;
+		height: 0.0125rem;
 		border: none;
 		stroke-width: 0;
 	}
 
 	a {
 		text-decoration: none;
-	}
-
-	h3 {
-		margin: 0;
 	}
 
 	@media (min-width: 48rem) {

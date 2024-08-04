@@ -1,6 +1,8 @@
 import { urqlClient } from '../setup/urql'
+import type { Blog } from '../types/Blog'
 
 export const load = async () => {
+  console.log(`Running Load Function for /`)
   console.log(`Fetching blogs from: ${urqlClient.url}`)
 
   let state = {
@@ -8,7 +10,7 @@ export const load = async () => {
     hasNextPage: true,
   }
 
-  let blogs: any[] = []
+  let blogs: Blog[] = []
 
   do {
     // eslint-disable-next-line no-await-in-loop

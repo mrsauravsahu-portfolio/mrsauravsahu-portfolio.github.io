@@ -30,7 +30,7 @@
 
 <style>
 	.brand span {
-		padding: 1rem;
+		padding: 0 1rem;
 		font-size: 2rem;
 		font-weight: bold;
 		font-family: var(--font-title);
@@ -39,7 +39,7 @@
 	span.home::after {
 		content: 'S';
 		position: relative;
-		left: -5%;
+		left: -4%;
 	}
 
 	nav {

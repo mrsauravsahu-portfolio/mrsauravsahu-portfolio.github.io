@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="../../favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+		<link href="../../_app/immutable/assets/0.CIsvGVDb.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/Icon.CKxq3JQL.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/6.k8hK0FAL.css" rel="stylesheet">
+		<link rel="modulepreload" href="../../_app/immutable/entry/start.BZP6kqOn.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/scheduler.CRJXd0Ru.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/index.BROcLZAA.js">
+		<link rel="modulepreload" href="../../_app/immutable/entry/app.D5P6bhjz.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/4.-LS5Hydt.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/index.SYJ30kti.js">
+		<link rel="modulepreload" href="../../_app/immutable/nodes/0.CiVpiBEK.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/Icon.PbCP-f0I.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/spread.CK8js_jb.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/index.es.BuYJgRRG.js">
+		<link rel="modulepreload" href="../../_app/immutable/nodes/6.D7bSFnhN.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/datetime.-3eSMY27.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/theme.BuOLo_Hm.js"><title>The Timer Class</title><!-- HEAD_svelte-qkxitr_START --><!-- HEAD_svelte-qkxitr_END -->
+	</head>
+	<body data-sveltekit-preload-data="hover">
+		<div style="display: contents">  <nav class="svelte-117dtzd"><div class="navmain svelte-117dtzd"><a href="/#home" class="brand svelte-117dtzd" data-svelte-h="svelte-1erdtke"> <span class="home svelte-117dtzd">S</span> </a> <button class="svelte-117dtzd"><svg version="1.1" class="fa-icon  svelte-1dof0an" width="6" height="16" role="presentation" viewBox="0 0 192 512" style="color: white"> <path id="path-0" d="M96 184c39.8 0 72 32.2 72 72s-32.2 72-72 72-72-32.2-72-72 32.2-72 72-72zM24 80c0 39.8 32.2 72 72 72s72-32.2 72-72S135.8 8 96 8 24 40.2 24 80zm0 352c0 39.8 32.2 72 72 72s72-32.2 72-72-32.2-72-72-72-72 32.2-72 72z"></path>   </svg></button></div> <ul class="navlinks svelte-117dtzd navlinks__closed"><li class="navlink svelte-117dtzd"><a href="/#recents" class="svelte-117dtzd" data-svelte-h="svelte-782tw6">recents</a></li> <li class="navlink svelte-117dtzd"><a href="/blog" class="svelte-117dtzd" data-svelte-h="svelte-bh5xwa">blogs</a></li> <li class="navlink svelte-117dtzd"><a href="/#contact" class="svelte-117dtzd" data-svelte-h="svelte-qpyx5a">contact</a></li> <li class="navlink svelte-117dtzd"><a href="/#about" class="svelte-117dtzd" data-svelte-h="svelte-ews8tg">about</a></li></ul> </nav> <main class="svelte-o4zobv"> <section class="blog-post svelte-1lgcgyg"> <h1 class="svelte-1lgcgyg">The Timer Class</h1> <h4 class="svelte-1lgcgyg"><span class="prefix svelte-1lgcgyg" data-svelte-h="svelte-16vrdq">Published on</span> Thursday, May 05 2016
+		•
+		 <span class="prefix svelte-1lgcgyg">less than a minute read</span></h4> <hr>       <p>This semester, according to our syllabus, we have the 'Design and Analysis of Algorithms' subject. The theory classes contain core algorithmic topics like divide - and - conquer, greedy technique and dynamic programming and in labs, we solve problems using said techniques. Typically, schools and colleges use Turbo C++, distributed by Borland, which we run under an emulated environment like DOSBOX because of  the deprecation of MS-DOS and surge of the Windows NT line of Operating Systems. However, we should clearly not ignore the alternatives out there. We still have to code the solution for the old Turbo C++ compiler from the 90s. I have created a repo on GitHub for solutions to the different problems in our syllabus (for MS-DOS, NT  - Visual C++ Compiler and Linux - g++) We are supposed to implement the given problem using the appropriate technique and we are to monitor the order of growth of said algorithm. In DOS, we use a Timer class that is present in the Template Class Library. By default, the include folder does not reference the Template Class Library, but this can be done pretty easily using the Settings Tab in Turbo C++. The problem is that the Timer class runs only on DOS, so clearly we need a simple Timer Class Implementation for Linux and Visual C++. I have gone and done just that. My implementation provides minimal functionality</p><ol start="1"><li>Starting a Timer </li><li>Stopping a Timer (Pause) </li><li>To Reset the Timer that makes it ready to use again </li><li>To return the time that passed between the function calls to start and stop </li></ol><p>The Visual C++ contains classes in the std::chrono namespace which I've used in my Timer implementation for Windows. For Linux, we use the ctime header file and the clock function. The link to the repository: <a href="https://github.com/sauravMSFT/Design-Analysis-Algorithms">https://github.com/sauravMSFT/Design-Analysis-Algorithms</a> In the next post, I'd like to talk about adding paths to the gcc and g++ environment variables on linux and maybe how to run gcc and g++ on Windows.</p>   <div class="utterance-root svelte-yttj2i"><script src="https://utteranc.es/client.js" repo="mrsauravsahu/portfolio-comments" issue-term="title" theme="github-dark" crossorigin="anonymous" label="comments" async></script></div>  </section> </main> 
+			
+			<script>
+				{
+					__sveltekit_1e37hzy = {
+						base: new URL("../..", location).pathname.slice(0, -1)
+					};
+
+					const element = document.currentScript.parentElement;
+
+					const data = [null,{"type":"data","data":{blog:{id:17,title:"The Timer Class",description:"Today I wrote some C++ ",createdAt:"2016-05-05T09:40:00.000Z",approxTimeToRead:"PT1M",coverImageUrl:"/store/48-my-personal-computing-setup/img.cover.jpeg",__typename:"Blog"},blogId:"17",blogContent:"This semester, according to our syllabus, we have the 'Design and Analysis of Algorithms' subject. The theory classes contain core algorithmic topics like divide - and - conquer, greedy technique and dynamic programming and in labs, we solve problems using said techniques. Typically, schools and colleges use Turbo C++, distributed by Borland, which we run under an emulated environment like DOSBOX because of  the deprecation of MS-DOS and surge of the Windows NT line of Operating Systems. However, we should clearly not ignore the alternatives out there. We still have to code the solution for the old Turbo C++ compiler from the 90s. I have created a repo on GitHub for solutions to the different problems in our syllabus (for MS-DOS, NT  - Visual C++ Compiler and Linux - g++) We are supposed to implement the given problem using the appropriate technique and we are to monitor the order of growth of said algorithm. In DOS, we use a Timer class that is present in the Template Class Library. By default, the include folder does not reference the Template Class Library, but this can be done pretty easily using the Settings Tab in Turbo C++. The problem is that the Timer class runs only on DOS, so clearly we need a simple Timer Class Implementation for Linux and Visual C++. I have gone and done just that. My implementation provides minimal functionality\n\n1.  Starting a Timer\n2.  Stopping a Timer (Pause)\n3.  To Reset the Timer that makes it ready to use again\n4.  To return the time that passed between the function calls to start and stop\n\nThe Visual C++ contains classes in the std::chrono namespace which I've used in my Timer implementation for Windows. For Linux, we use the ctime header file and the clock function. The link to the repository: https://github.com/sauravMSFT/Design-Analysis-Algorithms In the next post, I'd like to talk about adding paths to the gcc and g++ environment variables on linux and maybe how to run gcc and g++ on Windows."},"uses":{"params":["blogId"]}}];
+
+					Promise.all([
+						import("../../_app/immutable/entry/start.BZP6kqOn.js"),
+						import("../../_app/immutable/entry/app.D5P6bhjz.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 6],
+							data,
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+	</body>
+</html>

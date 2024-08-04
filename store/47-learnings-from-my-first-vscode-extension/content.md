@@ -8,7 +8,7 @@ I created and published my first VSCode Extension a few weeks back and here are 
 
 ## What did I build?
 
-Have you ever experienced this - you pull in the latest code from your teams' repository and without changing anything you see ESLint already trying to format the files differently. 😂 Well, this is because of inconsistent VSCode settings between team members. Your teammates could also be missing extensions that format files well. All of these issues can be fixed if everyone in your team used consistent VSCode settings and Extensions. So, this is what I build - **[VSCode Manager](http://github.com/mrsauravsahu/vscode-manager)** is an extension to help you create isolated VSCode profiles to achieve consistent settings and extensions between you and your team members. There are other features too, but that's the gist.
+Have you ever experienced this - you pull in the latest code from your teams' repository and without changing anything you see ESLint already trying to format the files differently. 😂 Well, this is because of inconsistent VSCode settings between team members. Your teammates could also be missing extensions that format files well. All of these issues can be fixed if everyone in your team used consistent VSCode settings and Extensions. So, this is what I build - **[VSCode Manager](https://github.com/mrsauravsahu/vscode-manager)** is an extension to help you create isolated VSCode profiles to achieve consistent settings and extensions between you and your team members. There are other features too, but that's the gist.
 
 ## Pros
 

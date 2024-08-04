@@ -1,1 +1,0 @@
-import{S as t,i as e,s as n}from"../../chunks/vendor-efe3cd23.js";async function r(){return this.redirect(301,"https://instagram.com/photosbysaurav")}class u extends t{constructor(s){super();e(this,s,null,null,n,{})}}export{u as default,r as preload};

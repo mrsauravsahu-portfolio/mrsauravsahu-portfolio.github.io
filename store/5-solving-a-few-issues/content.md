@@ -2,7 +2,7 @@
 Ever since I installed Ubuntu on my laptop, one thing that I was itching to do was to figure out a way to change the brightness value. I've never been a fan of bright displays that just burn your eyes out.  
 After researching a lot on the web (I use Bing as my default Search Engine, as it provides me with better search results, according to me), I found a solution, kind of. Now I am able to change the brightness, but there's one teeny - weeny problem. The minimum value totally turns off the screen. Minimum value is literally 0%. Hopefully, I, with the help of my friends, will be able to fix this.  
   
-Here's the link where I found out the solution: [The Link](http://askubuntu.com/questions/288265/display-brightness-problem-with-ubuntu-13-04)  
+Here's the link where I found out the solution: [The Link](https://askubuntu.com/questions/288265/display-brightness-problem-with-ubuntu-13-04)  
   
 The actual post.  
 
@@ -39,7 +39,7 @@ I found that this works for Ubuntu 14.04 as well. Here's a screen shot of my det
 One thing that I still haven't figured how to, is to use my AMD graphics card as default rather than the Intel one.  
   
   
-The next issue that I was facing was scanning from my HP DeskJet 4515 All-In-One Printer. I solved this as well. I just had to install the necessary drivers. It was a tough thing to do though. I found this page: [Ubuntu Hand Book](http://ubuntuhandbook.org/index.php/2013/09/install-hp-linux-printer-driver-in-ubuntu/)  
+The next issue that I was facing was scanning from my HP DeskJet 4515 All-In-One Printer. I solved this as well. I just had to install the necessary drivers. It was a tough thing to do though. I found this page: [Ubuntu Hand Book](https://ubuntuhandbook.org/index.php/2013/09/install-hp-linux-printer-driver-in-ubuntu/)  
   
 Now, I scan from and print to my network printer.  
   

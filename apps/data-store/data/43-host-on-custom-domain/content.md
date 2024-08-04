@@ -62,4 +62,4 @@ Wait for Github to check if you've configured your DNS records correctly. Once G
 
 Now you have both HTTPS and a custom domain!
 
-This was a lot of fun and I finally have a custom domain. <strong>#LearningNeverStops</strong> Comment what is your website's link? You can reach out to me - well, anywhere, checkout my [contacts page](/socials).
+This was a lot of fun and I finally have a custom domain. <strong>#LearningNeverStops</strong> Comment what is your website's link? You can reach out to me - well, anywhere, checkout my [contacts page](/#contact).

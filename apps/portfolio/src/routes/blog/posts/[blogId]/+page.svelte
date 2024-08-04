@@ -63,6 +63,10 @@
 		font-size: 2.5rem;
 	}
 
+	h4 {
+		font-family: unset;
+	}
+
 	/*
 	
 	wc-markdown :global(:not(pre) > code) {

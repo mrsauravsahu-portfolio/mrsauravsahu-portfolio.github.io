@@ -113,7 +113,7 @@ signUpSchema.validate(signUp, { abortEarly: false })
 ]
 ```
 
-This is great, and yupjs has support for lots of different types of validations out-of-the-box, listed here - [yupjs API]([https://github.com/jquense/yup#api](https://github.com/jquense/yup#api))
+This is great, and yupjs has support for lots of different types of validations out-of-the-box, listed here - https://github.com/jquense/yup#api
 
 ## What is referential validation?
 

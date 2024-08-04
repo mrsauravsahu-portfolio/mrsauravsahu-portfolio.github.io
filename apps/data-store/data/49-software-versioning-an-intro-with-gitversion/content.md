@@ -24,7 +24,7 @@ Let’s see if there are issues with versioning now? Well, for starters, doing g
 
 However, this scheme doesn’t make it clear, the type of changes going in any new version. So we need a more “semantic” versioning scheme. Enter, the **[Semantic Versioning 2.0.0 Spec](https://semver.org/).** Semantic Versioning or “semver” for short, gives a great documented way of documenting. The gist of which is —
 
-![semver summary from semver.org](/store/49-software-versioning-an-intro-with-gitversion/images/semver-summary.jpeg)
+<img class='half' src='/store/49-software-versioning-an-intro-with-gitversion/images/semver-summary.jpeg' alt='semver summary from semver.org'>
 
 ### How can I setup semver for my project?
 
@@ -32,7 +32,7 @@ Well, semver is a specification, so following it manually is a good way to start
 
 ## GitVersion — A more automated approach to versioning
 
-One of the best ways to automate versioning is with [GitVersion](https://gitversion.net/). GitVersion is a tool to help with  versioning through your git history and commit messages.
+One of the best ways to automate versioning is with [GitVersion](https://gitversion.net/). GitVersion is a tool to help with versioning through your git history and commit messages.
 
 > Note: All code related to this blog is available here — [blog-semver@github](https://github.com/mrsauravsahu/blog-semver). Over the next few weeks, I'll be working on improving it so you can always find the latest code here.
 
@@ -137,7 +137,7 @@ GitVersion spits out more detailed version values, but I stick to the `MajorMino
 
 I'm currently working on a new step in Github Actions which writes this new version into the `package.json` and `package-lock.json` files and makes a commit, freezing the version into the source code. So, the commit history looks like this —
 
-![gitversion in github actions](/store/49-software-versioning-an-intro-with-gitversion/images/gitversion-in-github-actions.png)
+<img src='/store/49-software-versioning-an-intro-with-gitversion/images/gitversion-in-github-actions.png' alt='gitversion in github actions'>
 
 Here's the current Github Actions step which auto commits the version file changes. Note: I'm still actively working on this Github Action, so expect some changes there. 😉 Also, if you notice the `package.json` and `package-lock.json` files, the formatting is a little weird. I'm still working on that. 😂
 

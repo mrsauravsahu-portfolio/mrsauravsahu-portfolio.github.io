@@ -13,7 +13,7 @@
 </svelte:head>
 
 <section class="container blogs">
-	<h1>blog</h1>
+	<h1>blogs</h1>
 	<p>
 		Here are few of the things that I learned in my 10-ish years of programming/learning journey.
 		Hope it's helpful to you as well. These blogs are usually dictated by what I'm upto...

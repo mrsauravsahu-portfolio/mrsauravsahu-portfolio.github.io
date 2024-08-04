@@ -8,7 +8,9 @@
 <nav class:nav__open={isNavOpen}>
 	<div class="navmain">
 		<a href="/#home" class="brand" on:click={() => (isNavOpen = false)}>
-			<Icon data={faHome} scale={2} style="color: white" />
+			<!-- <Icon data={faHome} scale={2} style="color: white" /> -->
+			<span class="home">S</span>
+			<!-- <span class='home secondary'>S</span> -->
 		</a>
 		<button
 			on:click={() => {
@@ -19,6 +21,7 @@
 		</button>
 	</div>
 	<ul class="navlinks" class:navlinks__closed={!isNavOpen}>
+		<li class="navlink"><a on:click={() => (isNavOpen = false)} href="/#recents">recents</a></li>
 		<li class="navlink"><a on:click={() => (isNavOpen = false)} href="/blog">blogs</a></li>
 		<li class="navlink"><a on:click={() => (isNavOpen = false)} href="/#contact">contact</a></li>
 		<li class="navlink"><a on:click={() => (isNavOpen = false)} href="/#about">about</a></li>
@@ -27,9 +30,18 @@
 
 <style>
 	.brand span {
+		padding: 1rem;
 		font-size: 2rem;
 		font-weight: bold;
+		font-family: var(--font-title);
 	}
+
+	span.home::after {
+		content: 'S';
+		position: relative;
+		left: -5%;
+	}
+
 	nav {
 		position: fixed;
 		width: 100%;

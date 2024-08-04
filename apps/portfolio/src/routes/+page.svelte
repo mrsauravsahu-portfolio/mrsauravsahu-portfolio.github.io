@@ -29,8 +29,8 @@
 
 <hr />
 
-<section class="blog" id="blog">
-	<h1>recent blogs</h1>
+<section class="blog" id="recents">
+	<h1>recents</h1>
 	<p>
 		Here are some of my blogs. You can also read these on your favorite blogging platforms, like <a
 			href="https://mrsauravsahu.medium.com">medium</a

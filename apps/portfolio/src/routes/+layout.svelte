@@ -19,6 +19,7 @@
 	@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@200;500;800&display=swap');
 	@import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
 	@import url('https://fonts.googleapis.com/css2?family=Concert+One&family=Courier+Prime&display=swap');
+	@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Concert+One&display=swap');
 
 	:global(html) {
 		margin: 0;
@@ -36,7 +37,7 @@
 	}
 
 	:global(*) {
-		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+		font-family: 'Comfortaa', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
 			Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 	}
 	:global(img){

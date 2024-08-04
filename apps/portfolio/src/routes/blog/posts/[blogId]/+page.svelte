@@ -1,17 +1,14 @@
 <script lang="ts">
 	import { DateTime, Duration } from 'luxon';
-	import { onMount } from 'svelte';
 	import Utterance from '../../../../components/utterance.svelte';
 	import type { PageData } from './$types';
 	import SvelteMarkdown from 'svelte-markdown';
 
 	export let data: PageData;
 	$: ({ blog, blogContent } = data);
-
-	// Duration.fromISO(blog.approxTimeToRead);
-	// const duration = { minutes: 0 };
-	// const durationText = 'less than a minute';
-	// duration.minutes <= 1 ? 'less than a minute' : `${duration.toFormat('m')} minutes`;
+	$: duration = Duration.fromISO(blog.approxTimeToRead);
+	$: durationText =
+		duration.minutes <= 1 ? 'less than a minute' : `${duration.toFormat('m')} minutes`;
 </script>
 
 <svelte:head>
@@ -25,9 +22,10 @@
 		<span class="prefix"> Published on </span>
 		{DateTime.fromISO(blog.createdAt).toFormat('EEEE, MMMM dd yyyy')}
 		•
-		<!-- {durationText} -->
-		<span class="prefix">read</span>
+		<!--  -->
+		<span class="prefix">{durationText} read</span>
 	</h4>
+	<hr />
 	<!-- <a href={blogUrl}>
 		<h2 type="h4">🔽 download raw</h2>
 	</a> -->

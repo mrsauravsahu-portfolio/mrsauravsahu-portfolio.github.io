@@ -22,6 +22,10 @@ namespace mrsauravsahu.api.contracts
         [UseSorting]
         public IQueryable<Blog> GetBlogs([Service] BlogsContext dbContext) => dbContext.Blogs.OrderByDescending(p => p.CreatedAt);
 
+        [UseOffsetPaging]
+        [UseSorting]
+        public IQueryable<Blog> GetBlogsPaginated([Service] BlogsContext dbContext) => dbContext.Blogs.OrderByDescending(p => p.CreatedAt);
+
         public IQueryable<Link> GetLinks([Service] BlogsContext dbContext) => dbContext.Links;
 
         public Task<Blog> GetBlogByIdAsync(BlogRouteParams input, [Service] BlogsService blogsService)
